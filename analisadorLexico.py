@@ -17,10 +17,7 @@ class Analisador(TokenCool):
         pos=0
         #print(len(self.conteudo))
 
-
         while(loop==True):
-
-
             if estado==0:
                 if self.ehChar(atualChar):
                     estado=1
@@ -44,7 +41,17 @@ class Analisador(TokenCool):
                     TokenCool.mostrarToken(self.tokenC, estado, palavra)
                     estado=0
                     palavra=""
-
+            if estado==3:
+                if self.ehNumero(atualChar):
+                    estado = 3
+                    palavra += atualChar
+                elif not self.ehNumero(atualChar) and estado==3 and not self.ehEspaco(atualChar):
+                    raise Exception('Numero Desconhecido')
+                else:
+                    estado=4
+                    TokenCool.mostrarToken(self.tokenC, estado, palavra)
+                    estado=0
+                    palavra = ""
             if self.ehEOF(pos):
                 return None
             else:
