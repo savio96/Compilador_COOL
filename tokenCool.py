@@ -26,3 +26,5 @@ class TokenCool():
     def mostrarToken(self,estado, texto):
         if estado==2:
             print("Token: "+texto + ": ",self.TK_IDENTIFICADOR)
+        if estado==4:
+            print("Token: " + texto + ": ", self.TK_NUM)
