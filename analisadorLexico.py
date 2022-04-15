@@ -36,10 +36,23 @@ class Analisador(TokenCool):
 
                 elif self.alertaComentarioMenos(atualChar):
                     estado=7
-                elif self.alertaComentarioMult(atualChar):
-                    pass
+                #elif self.alertaComentarioMult(atualChar):
+                    #pass
 
-                elif self.eh
+                elif self.ehOperadorRel(atualChar):
+                    if atualChar=="<":
+                        estado=11
+                    elif atualChar=="~":
+                        estado=18
+                    else:
+                        estado=15
+
+                elif self.ehOperadorArit(atualChar):
+                    estado=19
+
+                elif self.ehDelimitador(atualChar) or self.ehDelimitadorEspe(atualChar):
+                    estado=16
+
             if estado == 1:
                 if self.ehChar(atualChar) or self.ehNumero(atualChar) or atualChar == "_":
                     estado = 1
@@ -103,7 +116,62 @@ class Analisador(TokenCool):
                 contComentMult+=1
                 if not atualChar=="*" and contComentMult==1:
             """
+            if estado==11:
+                palavra += atualChar
+                if atualChar=="=":
+                    estado=12
+                    TokenCool.mostrarToken(self.tokenC, estado, palavra)
+                    palavra=""
+                    estado=0
+                elif atualChar=="-":
+                    estado=13
+                    TokenCool.mostrarToken(self.tokenC, estado, palavra)
+                    palavra=""
+                    estado=0
+                elif atualChar!="<":
+                    atualChar=self.voltar(pos)
+                    pos -= 1
+                    palavra=atualChar
+                    estado=12
+                    TokenCool.mostrarToken(self.tokenC, estado, palavra)
+                    palavra=""
+                    estado=0
 
+            if estado==15:
+                palavra+=atualChar
+                if atualChar==">":
+                    estado=12
+                    TokenCool.mostrarToken(self.tokenC, estado, palavra)
+                    palavra=""
+                    estado=0
+                elif atualChar != "=":
+                    atualChar = self.voltar(pos)
+                    pos -= 1
+                    palavra = atualChar
+                    estado = 12
+                    TokenCool.mostrarToken(self.tokenC, estado, palavra)
+                    palavra = ""
+                    estado = 0
+            if estado==16:
+                palavra+=atualChar
+                estado=17
+                TokenCool.mostrarToken(self.tokenC, estado, palavra)
+                palavra = ""
+                estado = 0
+
+            if estado==18:
+                palavra+=atualChar
+                estado=12
+                TokenCool.mostrarToken(self.tokenC, estado, palavra)
+                estado=0
+                palavra=""
+
+            if estado==19:
+                palavra += atualChar
+                estado = 8
+                TokenCool.mostrarToken(self.tokenC, estado, palavra)
+                estado = 0
+                palavra = ""
             if self.ehEOF(pos):
                 return None
             else:
@@ -141,10 +209,13 @@ class Analisador(TokenCool):
         if char=="-":
             return True
         return False
-    def alertaComentarioMult(self,char):
+    """
+        def alertaComentarioMult(self,char):
         if char=="(":
             return True
         return False
+    """
+
     def palavrasReservadas(self,palavra):
         lista=["class","else","false","fi","if","in","inherits","isvoid","let","loop","pool","then","while","case",
                "esac", "new", "of","not","true","self", "SELF_TYPE"]
@@ -152,12 +223,29 @@ class Analisador(TokenCool):
             return True
         return False
 
-    def ehOperador(self,char):
-        lista=["<","="]
+    def ehOperadorRel(self,char):
+        lista=["<","=","~"]
         if char in lista:
             return True
         return False
 
+    def ehDelimitador(self,char):
+        lista=[";",":",","]
+        if char in lista:
+            return True
+        return False
+
+    def ehDelimitadorEspe(self,char):
+        lista = ['(',')', '[',']','{','}']
+        if char in lista:
+            return True
+        return False
+
+    def ehOperadorArit(self,char):
+        lista = ['+','*', '/']
+        if char in lista:
+            return True
+        return False
 
     def proxChar(self, pos):
         return self.conteudo[pos + 1]
