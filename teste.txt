@@ -1,2 +1,4 @@
-2 * 2
+SELF_TYPE
+asd
+defgfasd
 

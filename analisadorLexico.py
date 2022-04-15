@@ -1,4 +1,5 @@
 import tokenCool
+import string
 from tokenCool import TokenCool
 
 
@@ -22,7 +23,7 @@ class Analisador(TokenCool):
 
         while (loop == True):
             if estado == 0:
-                if self.ehChar(atualChar):
+                if self.ehCharMin(atualChar):
                     estado = 1
 
                 elif self.ehNumero(atualChar):
@@ -52,9 +53,10 @@ class Analisador(TokenCool):
 
                 elif self.ehDelimitador(atualChar) or self.ehDelimitadorEspe(atualChar):
                     estado=16
-
+                elif self.ehCharMax(atualChar):
+                    estado=20
             if estado == 1:
-                if self.ehChar(atualChar) or self.ehNumero(atualChar) or atualChar == "_":
+                if self.ehCharMin(atualChar) or self.ehCharMax(atualChar) or self.ehNumero(atualChar) or atualChar == "_":
                     estado = 1
                     palavra += atualChar
                     # atualChar = self.proxChar(pos)
@@ -172,6 +174,21 @@ class Analisador(TokenCool):
                 TokenCool.mostrarToken(self.tokenC, estado, palavra)
                 estado = 0
                 palavra = ""
+            if estado==20:
+                if self.ehCharMin(atualChar) or self.ehCharMax(atualChar) or self.ehNumero(atualChar) or atualChar == "_":
+                    estado = 20
+                    palavra += atualChar
+                else:
+                    if self.palavrasReservadas(palavra):
+                        estado=10
+                        TokenCool.mostrarToken(self.tokenC, estado, palavra)
+                        estado = 0
+                        palavra = ""
+                    else:
+                        estado = 22
+                        TokenCool.mostrarToken(self.tokenC, estado, palavra)
+                        estado = 0
+                        palavra = ""
             if self.ehEOF(pos):
                 return None
             else:
@@ -185,8 +202,12 @@ class Analisador(TokenCool):
             return True
         return False
 
-    def ehChar(self, char):
-        if (char >= "a" and char <= "z") or (char >= "A" and char <= "Z"):
+    def ehCharMin(self, char):
+        if (char >= "a" and char <= "z"):
+            return True
+        return False
+    def ehCharMax(self, char):
+        if (char >= "A" and char <= "Z"):
             return True
         return False
 
@@ -230,7 +251,7 @@ class Analisador(TokenCool):
         return False
 
     def ehDelimitador(self,char):
-        lista=[";",":",","]
+        lista=[";",":",",","@","."]
         if char in lista:
             return True
         return False
