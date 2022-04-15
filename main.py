@@ -17,6 +17,6 @@ def main(self=None):
     #teste=Analisador.ehDigito(self,"1")
     #teste=Analisador.ehOperador(self,"3")
     #print(teste)
-
+    print("\n")
 
 main()

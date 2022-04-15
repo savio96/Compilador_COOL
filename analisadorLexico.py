@@ -16,6 +16,8 @@ class Analisador(TokenCool):
         loop = True
         pos = 0
         contString=0
+        contComent=0
+        contComentMult=0
         # print(len(self.conteudo))
 
         while (loop == True):
@@ -32,6 +34,12 @@ class Analisador(TokenCool):
                 elif self.ehString(atualChar):
                     estado = 5
 
+                elif self.alertaComentarioMenos(atualChar):
+                    estado=7
+                elif self.alertaComentarioMult(atualChar):
+                    pass
+
+                elif self.eh
             if estado == 1:
                 if self.ehChar(atualChar) or self.ehNumero(atualChar) or atualChar == "_":
                     estado = 1
@@ -40,10 +48,16 @@ class Analisador(TokenCool):
                     # pos+=1
 
                 else:
-                    estado = 2
-                    TokenCool.mostrarToken(self.tokenC, estado, palavra)
-                    estado = 0
-                    palavra = ""
+                    if self.palavrasReservadas(palavra):
+                        estado=10
+                        TokenCool.mostrarToken(self.tokenC, estado, palavra)
+                        estado = 0
+                        palavra = ""
+                    else:
+                        estado = 2
+                        TokenCool.mostrarToken(self.tokenC, estado, palavra)
+                        estado = 0
+                        palavra = ""
             if estado == 3:
                 if self.ehNumero(atualChar):
                     estado = 3
@@ -56,8 +70,10 @@ class Analisador(TokenCool):
                     estado = 0
                     palavra = ""
             if estado == 5:
-
-                palavra+=atualChar
+                if atualChar=="\\":
+                    palavra=palavra
+                else:
+                    palavra+=atualChar
 
                 if atualChar=='"' and contString==1:
                     estado=6
@@ -67,6 +83,27 @@ class Analisador(TokenCool):
                     contString=0
                 else:
                     contString = 1
+
+            if estado==7:
+                if atualChar=="-":
+                    contComent+=1
+                if contComent==1 and not atualChar=="-":
+                    atualChar=self.voltar(pos)
+                    pos-=1
+                    palavra+=atualChar
+                    estado = 8
+                    TokenCool.mostrarToken(self.tokenC, estado, palavra)
+                    palavra=""
+                    estado=0
+                # colocar os erros do cometários
+                if contComent>=4:
+                    estado=0
+            """
+            if estado==9:
+                contComentMult+=1
+                if not atualChar=="*" and contComentMult==1:
+            """
+
             if self.ehEOF(pos):
                 return None
             else:
@@ -99,6 +136,28 @@ class Analisador(TokenCool):
         if char == '"':
             return True
         return False
+
+    def alertaComentarioMenos(self,char):
+        if char=="-":
+            return True
+        return False
+    def alertaComentarioMult(self,char):
+        if char=="(":
+            return True
+        return False
+    def palavrasReservadas(self,palavra):
+        lista=["class","else","false","fi","if","in","inherits","isvoid","let","loop","pool","then","while","case",
+               "esac", "new", "of","not","true","self", "SELF_TYPE"]
+        if palavra in lista:
+            return True
+        return False
+
+    def ehOperador(self,char):
+        lista=["<","="]
+        if char in lista:
+            return True
+        return False
+
 
     def proxChar(self, pos):
         return self.conteudo[pos + 1]

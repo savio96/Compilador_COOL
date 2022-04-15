@@ -8,6 +8,8 @@ class TokenCool():
         self.TK_OPERADOR=3
         self.TK_PONTUACAO=4
         self.TK_ATRIBUICAO=5
+        self.TK_PALAVRARESERVADA=6
+        self.TK_DELIMITADOR=7
         self.tipo = -1
         self.texto=""
 
@@ -31,3 +33,8 @@ class TokenCool():
             print("Token: " + texto + ": ", self.TK_NUM)
         if estado==6:
             print("Token: " + texto + ": ", self.TK_STRING)
+        if estado==8:
+            print("Token: " + texto + ": ", self.TK_OPERADOR)
+        if estado == 10:
+            print("Token: " + texto + ": ", self.TK_PALAVRARESERVADA)
+
