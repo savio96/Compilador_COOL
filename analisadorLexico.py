@@ -72,6 +72,8 @@ class Analisador(TokenCool):
                         TokenCool.mostrarToken(self.tokenC, estado, palavra)
                         estado = 0
                         palavra = ""
+                        atualChar = self.voltar(pos)
+                        pos -= 1
                     else:
                         estado = 2
                         TokenCool.mostrarToken(self.tokenC, estado, palavra)
@@ -156,6 +158,7 @@ class Analisador(TokenCool):
                     TokenCool.mostrarToken(self.tokenC, estado, palavra)
                     palavra=""
                     estado=0
+                    contComent = 0
                 if contComent>=4:
                     estado=0
                     contComent=0
@@ -253,23 +256,24 @@ class Analisador(TokenCool):
 
                 if estado==21 and atualChar==")":
                     atualChar=self.voltar(pos)
+                    pos-=1
                     if atualChar=="*":
                         atualChar=self.proxChar(pos)
                         estado=0
                         contComentMult=0
+                    atualChar = self.proxChar(pos)
+                    pos+=1
             if estado==22:
                 print("Posicao do erro na linha:", posLinha)
                 raise Exception('letra desconhecida')
 
             if self.ehEOF(pos):
                 if contComent==2 or contComentMult==1 :
-                    print("Posicao do erro na linha:", posLinha)
                     raise Exception('Comentário nao fechado')
                 elif contString==1:
-                    print("Posicao do erro na linha:", posLinha)
                     raise Exception('String nao fechada')
                 elif contDeli%2!=0:
-                    print("Posicao do erro na linha:", posLinha)
+                    print(contDeli)
                     raise Exception('Delimitador nao fechado')
                 return None
             else:
