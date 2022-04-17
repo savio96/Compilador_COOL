@@ -19,6 +19,8 @@ class Analisador(TokenCool):
         contString=0
         contComent=0
         contComentMult=0
+        contDeli=0
+        posLinha=1
         # print(len(self.conteudo))
 
         while (loop == True):
@@ -55,6 +57,8 @@ class Analisador(TokenCool):
                     estado=16
                 elif self.ehCharMax(atualChar):
                     estado=20
+                elif self.ehInvalido(atualChar):
+                    estado=22
             if estado == 1:
                 if self.ehCharMin(atualChar) or self.ehCharMax(atualChar) or self.ehNumero(atualChar) or atualChar == "_":
                     estado = 1
@@ -80,12 +84,20 @@ class Analisador(TokenCool):
                     estado = 3
                     palavra += atualChar
                 else:
-                    estado=4
-                    TokenCool.mostrarToken(self.tokenC, estado, palavra)
-                    estado=0
-                    palavra=""
-                    atualChar=self.voltar(pos)
-                    pos-=1
+                    if self.ehOperadorArit(atualChar) or self.ehEspaco(atualChar) or self.ehOperadorRel(atualChar) or self.ehDelimitador(atualChar):
+                        if atualChar not in ["@", "."]:
+                            estado=4
+                            TokenCool.mostrarToken(self.tokenC, estado, palavra)
+                            estado=0
+                            palavra=""
+                            atualChar=self.voltar(pos)
+                            pos-=1
+                        else:
+                            print("Posicao do erro na linha:", posLinha)
+                            raise Exception('Numero desconhecido')
+                    else:
+                        print("Posicao do erro na linha:", posLinha)
+                        raise Exception('Numero desconhecido')
                     """
                     if self.ehOperadorArit(atualChar):
                         estado=4
@@ -129,7 +141,6 @@ class Analisador(TokenCool):
                     TokenCool.mostrarToken(self.tokenC, estado, palavra)
                     palavra=""
                     estado=0
-                # colocar os erros do cometários
                 if contComent>=4:
                     estado=0
             """
@@ -174,6 +185,8 @@ class Analisador(TokenCool):
                     palavra = ""
                     estado = 0
             if estado==16:
+                if self.ehDelimitadorEspe(atualChar):
+                    contDeli+=1
                 palavra+=atualChar
                 estado=17
                 TokenCool.mostrarToken(self.tokenC, estado, palavra)
@@ -212,12 +225,12 @@ class Analisador(TokenCool):
                         pos-=1
 
             if estado==21:
-                contComentMult=1
-                if contComentMult==1 and atualChar=="*":
+                if contComentMult==0 and atualChar=="*":
                     contComentMult+=1
-                elif contComentMult==1 and self.proxChar(pos)!="*":
+                elif contComentMult==0 and self.proxChar(pos)!="*":
                     estado=17
                     palavra+=atualChar
+                    contDeli+=1
                     TokenCool.mostrarToken(self.tokenC, estado, palavra)
                     estado=0
                     palavra=""
@@ -227,11 +240,28 @@ class Analisador(TokenCool):
                     if atualChar=="*":
                         atualChar=self.proxChar(pos)
                         estado=0
+                        contComentMult=0
+            if estado==22:
+                print("Posicao do erro na linha:", posLinha)
+                raise Exception('letra desconhecida')
+
             if self.ehEOF(pos):
+                if contComent==2 or contComentMult==1 :
+                    print("Posicao do erro na linha:", posLinha)
+                    raise Exception('Comentário nao fechado')
+                elif contString==1:
+                    print("Posicao do erro na linha:", posLinha)
+                    raise Exception('String nao fechada')
+                elif contDeli%2!=0:
+                    print("Posicao do erro na linha:", posLinha)
+                    raise Exception('Delimitador nao fechado')
                 return None
             else:
                 atualChar = self.proxChar(pos)
                 pos += 1
+                if atualChar=="\n":
+                    posLinha+=1
+
 
             # print(palavra+"\n")
 
@@ -301,7 +331,13 @@ class Analisador(TokenCool):
         return False
 
     def ehOperadorArit(self,char):
-        lista = ['+','*', '/']
+        lista = ['+','*', '/',"-"]
+        if char in lista:
+            return True
+        return False
+
+    def ehInvalido(self,char):
+        lista = ['$', "#","null","!","%","&","'","?","^","`","|"]
         if char in lista:
             return True
         return False
