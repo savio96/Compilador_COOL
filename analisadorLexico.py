@@ -37,8 +37,8 @@ class Analisador(TokenCool):
 
                 elif self.alertaComentarioMenos(atualChar):
                     estado=7
-                #elif self.alertaComentarioMult(atualChar):
-                    #pass
+                elif self.alertaComentarioMult(atualChar):
+                    estado=21
 
                 elif self.ehOperadorRel(atualChar):
                     if atualChar=="<":
@@ -73,17 +73,36 @@ class Analisador(TokenCool):
                         TokenCool.mostrarToken(self.tokenC, estado, palavra)
                         estado = 0
                         palavra = ""
+                        atualChar=self.voltar(pos)
+                        pos-=1
             if estado == 3:
                 if self.ehNumero(atualChar):
                     estado = 3
                     palavra += atualChar
-                elif not self.ehNumero(atualChar) and estado == 3 and not self.ehEspaco(atualChar):
-                    raise Exception('Numero Desconhecido')
                 else:
+                    estado=4
+                    TokenCool.mostrarToken(self.tokenC, estado, palavra)
+                    estado=0
+                    palavra=""
+                    atualChar=self.voltar(pos)
+                    pos-=1
+                    """
+                    if self.ehOperadorArit(atualChar):
+                        estado=4
+                        TokenCool.mostrarToken(self.tokenC, estado, palavra)
+                        estado = 0
+                        palavra = ""
+                        atualChar = self.voltar(pos)
+                        pos -= 1
+                elif self.ehEspaco(atualChar):
                     estado = 4
                     TokenCool.mostrarToken(self.tokenC, estado, palavra)
                     estado = 0
                     palavra = ""
+                    atualChar = self.voltar(pos)
+                    pos -= 1"""
+
+
             if estado == 5:
                 if atualChar=="\\":
                     palavra=palavra
@@ -189,6 +208,25 @@ class Analisador(TokenCool):
                         TokenCool.mostrarToken(self.tokenC, estado, palavra)
                         estado = 0
                         palavra = ""
+                        atualChar=self.voltar(pos)
+                        pos-=1
+
+            if estado==21:
+                contComentMult=1
+                if contComentMult==1 and atualChar=="*":
+                    contComentMult+=1
+                elif contComentMult==1 and self.proxChar(pos)!="*":
+                    estado=17
+                    palavra+=atualChar
+                    TokenCool.mostrarToken(self.tokenC, estado, palavra)
+                    estado=0
+                    palavra=""
+
+                if estado==21 and atualChar==")":
+                    atualChar=self.voltar(pos)
+                    if atualChar=="*":
+                        atualChar=self.proxChar(pos)
+                        estado=0
             if self.ehEOF(pos):
                 return None
             else:
@@ -210,12 +248,12 @@ class Analisador(TokenCool):
         if (char >= "A" and char <= "Z"):
             return True
         return False
-
+    """
     def ehOperador(self, char):
         if char == ">" or char == "<" or char == "=" or char == "!":
             return True
         return False
-
+    """
     def ehEspaco(self, char):
         if char == " " or char == "\t" or char == "\n" or char == "\r" or char == "\f":
             return True
@@ -230,12 +268,12 @@ class Analisador(TokenCool):
         if char=="-":
             return True
         return False
-    """
-        def alertaComentarioMult(self,char):
+
+    def alertaComentarioMult(self,char):
         if char=="(":
             return True
         return False
-    """
+
 
     def palavrasReservadas(self,palavra):
         lista=["class","else","false","fi","if","in","inherits","isvoid","let","loop","pool","then","while","case",
