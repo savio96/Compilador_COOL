@@ -1,5 +1,5 @@
-class Main inherits IO {
-    main(): Object {
+class ^ Main inherits IO {
+    main(): Object  {
         let hello: String <- "Hello, ",
             name: String <- "",
             ending: String <- "!\n"
