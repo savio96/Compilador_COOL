@@ -84,7 +84,7 @@ class Analisador(TokenCool):
                     estado = 3
                     palavra += atualChar
                 else:
-                    if self.ehOperadorArit(atualChar) or self.ehEspaco(atualChar) or self.ehOperadorRel(atualChar) or self.ehDelimitador(atualChar):
+                    if self.ehOperadorArit(atualChar) or self.ehEspaco(atualChar) or self.ehOperadorRel(atualChar) or self.ehDelimitador(atualChar) or self.ehDelimitadorEspe(atualChar):
                         if atualChar not in ["@", "."]:
                             estado=4
                             TokenCool.mostrarToken(self.tokenC, estado, palavra)
@@ -120,7 +120,22 @@ class Analisador(TokenCool):
                     palavra=palavra
                 else:
                     palavra+=atualChar
-
+                if atualChar=="0":
+                    atualChar=self.voltar(pos)
+                    pos-=1
+                    if atualChar=="\\":
+                        print("Posicao do erro na linha:", posLinha)
+                        raise Exception('Null em string')
+                    atualChar=self.proxChar(pos)
+                    pos+=1
+                if atualChar=="\n":
+                    atualChar = self.voltar(pos)
+                    pos -= 1
+                    if atualChar != '\\':
+                        print("Posicao do erro na linha:", posLinha)
+                        raise Exception('Quebra de linha')
+                    atualChar = self.proxChar(pos)
+                    pos += 1
                 if atualChar=='"' and contString==1:
                     estado=6
                     TokenCool.mostrarToken(self.tokenC, estado, palavra)
@@ -143,6 +158,7 @@ class Analisador(TokenCool):
                     estado=0
                 if contComent>=4:
                     estado=0
+                    contComent=0
             """
             if estado==9:
                 contComentMult+=1
@@ -285,7 +301,7 @@ class Analisador(TokenCool):
         return False
     """
     def ehEspaco(self, char):
-        if char == " " or char == "\t" or char == "\n" or char == "\r" or char == "\f":
+        if char == " " or char == "\t" or char == "\n" or char == "\r" or char == "\f" or char=="\v":
             return True
         return False
 
