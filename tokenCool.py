@@ -2,6 +2,7 @@
 
 class TokenCool():
     def __init__(self):
+        # Tokens da Linguagem COOL
         self.TK_IDENTIFICADOR=0
         self.TK_NUM=1
         self.TK_STRING=2
@@ -15,8 +16,8 @@ class TokenCool():
         self.tipo = -1
         self.texto=""
 
-
-    def getTipo(self):
+    """
+        def getTipo(self):
         return self.tipo
 
     def setTipo(self,tipo):
@@ -27,7 +28,9 @@ class TokenCool():
 
     def setTexto(self,texto):
         self.texto=texto
+    """
 
+    # Printar os tokens na tela.
     def mostrarToken(self,estado, texto):
         if estado==2:
             print("Token: "+texto + ": ",self.TK_IDENTIFICADOR)

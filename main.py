@@ -1,22 +1,18 @@
-from analisadorLexico import Analisador
+from analisadorLexico import AnalisadorLexico
 
+# Ler e fechar arquivo e retorna o conteúdo.
 def lerArquivo(nomeArq):
     arq = open(nomeArq, "r")
     string = arq.read()
     arq.close()
-
     return string
 
-
+# Função principal
 def main(self=None):
-    arq=lerArquivo("teste.txt")
-
-    analisar=Analisador(arq)
+    arq=lerArquivo("complex.txt")
+    # AnalisadorLexico Léxico
+    analisar=AnalisadorLexico(arq)
     print(analisar.proxToken())
-    #teste=Analisador.ehNumero(self,"b")
-    #teste=Analisador.ehDigito(self,"1")
-    #teste=Analisador.ehOperador(self,"3")
-    #print(teste)
     print("\n")
 
 main()
