@@ -6,7 +6,9 @@ class Main inherits IO {
         in {
             out_string("Please enter your name:\n");
             name <- in_string();
-            out_string(hello.concat(name.concat(ending)));
+            out_string(hello.concat(name.concat(ending))); -- oi
         }
+        -- eu
+
     };
 };

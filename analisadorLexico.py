@@ -28,7 +28,7 @@ class AnalisadorLexico(TokenCool):
         pos = 0
         # Sinalizador do começo de uma String.
         contString = 0
-        # Sinalizador do começo de um comentário --...--.
+        # Sinalizador do começo de um comentário --....
         contComent = 0
         # Sinalizador do começo de um comentário (*...*)..
         contComentMult = 0
@@ -167,9 +167,11 @@ class AnalisadorLexico(TokenCool):
                     palavra = ""
                     estado = 0
                     contComent = 0
-                if contComent >= 4:
-                    estado = 0
-                    contComent = 0
+                if atualChar=="\n" and contComent>=2:
+                    estado=0
+                    palavra=""
+
+
             # Estado em que os operadores relacionais são iniciados em <.
             if estado == 11:
                 palavra += atualChar
@@ -194,7 +196,7 @@ class AnalisadorLexico(TokenCool):
                     TokenCool.mostrarToken(self.tokenC, estado, palavra)
                     palavra = ""
                     estado = 0
-            # Estado que verifica se o operador é iniciado co =.
+            # Estado que verifica se o operador é iniciado com =.
             if estado == 15:
                 palavra += atualChar
                 # Condição se o operador for =>
