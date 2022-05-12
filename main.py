@@ -9,7 +9,7 @@ def lerArquivo(nomeArq):
 
 # Função principal
 def main(self=None):
-    arq=lerArquivo("complex.txt")
+    arq=lerArquivo("coolHello.txt")
     # AnalisadorLexico Léxico
     analisar=AnalisadorLexico(arq)
     print(analisar.proxToken())
