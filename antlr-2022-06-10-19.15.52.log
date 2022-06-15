@@ -1,0 +1,593 @@
+2022-06-10 19:15:52:479 grammar LogManager.java:25 before: (COMBINED_GRAMMAR Cool (@ header {
+from analisadorSemantico import AnalisadorSemantico
+from variavel import Variavel
+}) (@ members {
+    semantico=AnalisadorSemantico()
+    semantico.tabela={}
+    nomeFolha=""
+    valorFolha=""
+}) (RULES (RULE prog (BLOCK (ALT (+ (BLOCK (ALT class ';')))))) (RULE class (BLOCK (ALT 'class' TYPE (? (BLOCK (ALT 'inherits' TYPE))) '{' (* (BLOCK (ALT feature ';'))) '}'))) (RULE feature (BLOCK (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } '(' (? (BLOCK (ALT formal (* (BLOCK (ALT ',' formal)))))) ')' ':' TYPE '{' expr '}') (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } ':' TYPE (? (BLOCK (ALT '<-' expr)))))) (RULE formal (BLOCK (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } ':' TYPE))) (RULE expr (BLOCK (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } '<-' expr) (ALT expr (? (BLOCK (ALT '@' TYPE))) '.' ID '(' (? (BLOCK (ALT expr (* (BLOCK (ALT ',' expr)))))) ')') (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } '(' (? (BLOCK (ALT expr (* (BLOCK (ALT ',' expr)))))) ')') (ALT 'if' expr 'then' expr 'else' expr 'fi') (ALT 'while' expr 'loop' expr 'pool') (ALT '{' (+ (BLOCK (ALT expr ';'))) '}') (ALT 'let' ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } ':' TYPE (? (BLOCK (ALT '<-' expr))) (* (BLOCK (ALT ',' ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } ':' TYPE (? (BLOCK (ALT '<-' expr)))))) 'in' expr) (ALT 'case' expr 'of' (+ (BLOCK (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } ':' TYPE '=>' expr))) 'esac') (ALT 'new' TYPE) (ALT 'isvoid' expr) (ALT expr '+' expr) (ALT expr '-' expr) (ALT expr '*' expr) (ALT expr '/' expr) (ALT '~' expr) (ALT expr '<' expr) (ALT expr '<=' expr) (ALT expr '=' expr) (ALT 'not' expr) (ALT '(' expr ')') (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               }) (ALT INTEGER) (ALT STRING) (ALT 'true') (ALT 'false'))) (RULE ID (BLOCK (ALT (BLOCK (ALT (.. 'a' 'z'))) (* (BLOCK (ALT (.. 'a' 'z')) (ALT (.. 'A' 'Z')) (ALT '_') (ALT (.. '0' '9'))))))) (RULE TYPE (BLOCK (ALT (BLOCK (ALT (.. 'A' 'Z'))) (* (BLOCK (ALT (.. 'a' 'z')) (ALT (.. 'A' 'Z')) (ALT '_') (ALT (.. '0' '9'))))))) (RULE STRING (BLOCK (ALT '"' (* (BLOCK (ALT ESC) (ALT .))) '"'))) (RULE INTEGER (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \r\b\t\n\f])))) (LEXER_ACTION_CALL channel HIDDEN)))) (RULE LINE_COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '--' (* (BLOCK (ALT .))) '\n') (LEXER_ACTION_CALL channel HIDDEN)))) (RULE COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '(*' (* (BLOCK (ALT .))) '*)') (LEXER_ACTION_CALL channel HIDDEN)))) (RULE ESC (RULEMODIFIERS fragment) (BLOCK (ALT '\\' [btnr"\\])))))
+2022-06-10 19:15:52:490 grammar LogManager.java:25 after: (COMBINED_GRAMMAR Cool (@ header {
+from analisadorSemantico import AnalisadorSemantico
+from variavel import Variavel
+}) (@ members {
+    semantico=AnalisadorSemantico()
+    semantico.tabela={}
+    nomeFolha=""
+    valorFolha=""
+}) (RULES (RULE prog (BLOCK (ALT (+ (BLOCK (ALT class ';')))))) (RULE class (BLOCK (ALT 'class' TYPE (? (BLOCK (ALT 'inherits' TYPE))) '{' (* (BLOCK (ALT feature ';'))) '}'))) (RULE feature (BLOCK (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } '(' (? (BLOCK (ALT formal (* (BLOCK (ALT ',' formal)))))) ')' ':' TYPE '{' expr '}') (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } ':' TYPE (? (BLOCK (ALT '<-' expr)))))) (RULE formal (BLOCK (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } ':' TYPE))) (RULE expr (BLOCK (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } '<-' expr) (ALT expr (? (BLOCK (ALT '@' TYPE))) '.' ID '(' (? (BLOCK (ALT expr (* (BLOCK (ALT ',' expr)))))) ')') (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } '(' (? (BLOCK (ALT expr (* (BLOCK (ALT ',' expr)))))) ')') (ALT 'if' expr 'then' expr 'else' expr 'fi') (ALT 'while' expr 'loop' expr 'pool') (ALT '{' (+ (BLOCK (ALT expr ';'))) '}') (ALT 'let' ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } ':' TYPE (? (BLOCK (ALT '<-' expr))) (* (BLOCK (ALT ',' ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } ':' TYPE (? (BLOCK (ALT '<-' expr)))))) 'in' expr) (ALT 'case' expr 'of' (+ (BLOCK (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } ':' TYPE '=>' expr))) 'esac') (ALT 'new' TYPE) (ALT 'isvoid' expr) (ALT expr '+' expr) (ALT expr '-' expr) (ALT expr '*' expr) (ALT expr '/' expr) (ALT '~' expr) (ALT expr '<' expr) (ALT expr '<=' expr) (ALT expr '=' expr) (ALT 'not' expr) (ALT '(' expr ')') (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               }) (ALT INTEGER) (ALT STRING) (ALT 'true') (ALT 'false'))) (RULE ID (BLOCK (ALT (BLOCK (ALT (.. 'a' 'z'))) (* (BLOCK (ALT (SET (.. 'a' 'z') (.. 'A' 'Z') '_' (.. '0' '9')))))))) (RULE TYPE (BLOCK (ALT (BLOCK (ALT (.. 'A' 'Z'))) (* (BLOCK (ALT (SET (.. 'a' 'z') (.. 'A' 'Z') '_' (.. '0' '9')))))))) (RULE STRING (BLOCK (ALT '"' (* (BLOCK (ALT ESC) (ALT .))) '"'))) (RULE INTEGER (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \r\b\t\n\f])))) (LEXER_ACTION_CALL channel HIDDEN)))) (RULE LINE_COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '--' (* (BLOCK (ALT .))) '\n') (LEXER_ACTION_CALL channel HIDDEN)))) (RULE COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '(*' (* (BLOCK (ALT .))) '*)') (LEXER_ACTION_CALL channel HIDDEN)))) (RULE ESC (RULEMODIFIERS fragment) (BLOCK (ALT '\\' [btnr"\\])))))
+2022-06-10 19:15:52:505 grammar LogManager.java:25 after extract implicit lexer =(COMBINED_GRAMMAR Cool (@ header {
+from analisadorSemantico import AnalisadorSemantico
+from variavel import Variavel
+}) (@ members {
+    semantico=AnalisadorSemantico()
+    semantico.tabela={}
+    nomeFolha=""
+    valorFolha=""
+}) (RULES (RULE prog (BLOCK (ALT (+ (BLOCK (ALT class ';')))))) (RULE class (BLOCK (ALT 'class' TYPE (? (BLOCK (ALT 'inherits' TYPE))) '{' (* (BLOCK (ALT feature ';'))) '}'))) (RULE feature (BLOCK (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } '(' (? (BLOCK (ALT formal (* (BLOCK (ALT ',' formal)))))) ')' ':' TYPE '{' expr '}') (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } ':' TYPE (? (BLOCK (ALT '<-' expr)))))) (RULE formal (BLOCK (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } ':' TYPE))) (RULE expr (BLOCK (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } '<-' expr) (ALT expr (? (BLOCK (ALT '@' TYPE))) '.' ID '(' (? (BLOCK (ALT expr (* (BLOCK (ALT ',' expr)))))) ')') (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } '(' (? (BLOCK (ALT expr (* (BLOCK (ALT ',' expr)))))) ')') (ALT 'if' expr 'then' expr 'else' expr 'fi') (ALT 'while' expr 'loop' expr 'pool') (ALT '{' (+ (BLOCK (ALT expr ';'))) '}') (ALT 'let' ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } ':' TYPE (? (BLOCK (ALT '<-' expr))) (* (BLOCK (ALT ',' ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } ':' TYPE (? (BLOCK (ALT '<-' expr)))))) 'in' expr) (ALT 'case' expr 'of' (+ (BLOCK (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } ':' TYPE '=>' expr))) 'esac') (ALT 'new' TYPE) (ALT 'isvoid' expr) (ALT expr '+' expr) (ALT expr '-' expr) (ALT expr '*' expr) (ALT expr '/' expr) (ALT '~' expr) (ALT expr '<' expr) (ALT expr '<=' expr) (ALT expr '=' expr) (ALT 'not' expr) (ALT '(' expr ')') (ALT ID {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               }) (ALT INTEGER) (ALT STRING) (ALT 'true') (ALT 'false')))))
+2022-06-10 19:15:52:505 grammar LogManager.java:25 lexer =(LEXER_GRAMMAR CoolLexer (@ header {
+from analisadorSemantico import AnalisadorSemantico
+from variavel import Variavel
+}) (@ members {
+    semantico=AnalisadorSemantico()
+    semantico.tabela={}
+    nomeFolha=""
+    valorFolha=""
+}) (RULES (RULE T__0 (BLOCK (ALT ';'))) (RULE T__1 (BLOCK (ALT 'class'))) (RULE T__2 (BLOCK (ALT 'inherits'))) (RULE T__3 (BLOCK (ALT '{'))) (RULE T__4 (BLOCK (ALT '}'))) (RULE T__5 (BLOCK (ALT '('))) (RULE T__6 (BLOCK (ALT ','))) (RULE T__7 (BLOCK (ALT ')'))) (RULE T__8 (BLOCK (ALT ':'))) (RULE T__9 (BLOCK (ALT '<-'))) (RULE T__10 (BLOCK (ALT '@'))) (RULE T__11 (BLOCK (ALT '.'))) (RULE T__12 (BLOCK (ALT 'if'))) (RULE T__13 (BLOCK (ALT 'then'))) (RULE T__14 (BLOCK (ALT 'else'))) (RULE T__15 (BLOCK (ALT 'fi'))) (RULE T__16 (BLOCK (ALT 'while'))) (RULE T__17 (BLOCK (ALT 'loop'))) (RULE T__18 (BLOCK (ALT 'pool'))) (RULE T__19 (BLOCK (ALT 'let'))) (RULE T__20 (BLOCK (ALT 'in'))) (RULE T__21 (BLOCK (ALT 'case'))) (RULE T__22 (BLOCK (ALT 'of'))) (RULE T__23 (BLOCK (ALT '=>'))) (RULE T__24 (BLOCK (ALT 'esac'))) (RULE T__25 (BLOCK (ALT 'new'))) (RULE T__26 (BLOCK (ALT 'isvoid'))) (RULE T__27 (BLOCK (ALT '+'))) (RULE T__28 (BLOCK (ALT '-'))) (RULE T__29 (BLOCK (ALT '*'))) (RULE T__30 (BLOCK (ALT '/'))) (RULE T__31 (BLOCK (ALT '~'))) (RULE T__32 (BLOCK (ALT '<'))) (RULE T__33 (BLOCK (ALT '<='))) (RULE T__34 (BLOCK (ALT '='))) (RULE T__35 (BLOCK (ALT 'not'))) (RULE T__36 (BLOCK (ALT 'true'))) (RULE T__37 (BLOCK (ALT 'false'))) (RULE ID (BLOCK (ALT (BLOCK (ALT (.. 'a' 'z'))) (* (BLOCK (ALT (SET (.. 'a' 'z') (.. 'A' 'Z') '_' (.. '0' '9')))))))) (RULE TYPE (BLOCK (ALT (BLOCK (ALT (.. 'A' 'Z'))) (* (BLOCK (ALT (SET (.. 'a' 'z') (.. 'A' 'Z') '_' (.. '0' '9')))))))) (RULE STRING (BLOCK (ALT '"' (* (BLOCK (ALT ESC) (ALT .))) '"'))) (RULE INTEGER (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \r\b\t\n\f])))) (LEXER_ACTION_CALL channel HIDDEN)))) (RULE LINE_COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '--' (* (BLOCK (ALT .))) '\n') (LEXER_ACTION_CALL channel HIDDEN)))) (RULE COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '(*' (* (BLOCK (ALT .))) '*)') (LEXER_ACTION_CALL channel HIDDEN)))) (RULE ESC (RULEMODIFIERS fragment) (BLOCK (ALT '\\' [btnr"\\])))))
+2022-06-10 19:15:52:609 action-translator LogManager.java:25 translate 
+    semantico=AnalisadorSemantico()
+    semantico.tabela={}
+    nomeFolha=""
+    valorFolha=""
+
+2022-06-10 19:15:52:609 action-translator LogManager.java:25 translate 
+from analisadorSemantico import AnalisadorSemantico
+from variavel import Variavel
+
+2022-06-10 19:15:52:691 left-recursion LogManager.java:25 expr
+    :   ( {} ID<tokenIndex=118>{
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } '<-'<tokenIndex=121> expr<tokenIndex=123,p=25> 
+        | ID<tokenIndex=151>{
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } '('<tokenIndex=154>(expr<tokenIndex=156> (','<tokenIndex=159> expr<tokenIndex=161>)*)?')'<tokenIndex=166> 
+        | 'if'<tokenIndex=170> expr<tokenIndex=172> 'then'<tokenIndex=174> expr<tokenIndex=176> 'else'<tokenIndex=178> expr<tokenIndex=180> 'fi'<tokenIndex=182> 
+        | 'while'<tokenIndex=186> expr<tokenIndex=188> 'loop'<tokenIndex=190> expr<tokenIndex=192> 'pool'<tokenIndex=194> 
+        | '{'<tokenIndex=198>(expr<tokenIndex=200> ';'<tokenIndex=202>)+'}'<tokenIndex=205> 
+        | 'let'<tokenIndex=209> ID<tokenIndex=211>{
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } ':'<tokenIndex=214> TYPE<tokenIndex=216> ('<-'<tokenIndex=219> expr<tokenIndex=221>)? (','<tokenIndex=226> ID<tokenIndex=228>{
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } ':'<tokenIndex=231> TYPE<tokenIndex=233> ('<-'<tokenIndex=236> expr<tokenIndex=238>)?)* 'in'<tokenIndex=244> expr<tokenIndex=246,p=19> 
+        | 'case'<tokenIndex=250> expr<tokenIndex=252> 'of'<tokenIndex=254> (ID<tokenIndex=257>{
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } ':'<tokenIndex=260> TYPE<tokenIndex=262> '=>'<tokenIndex=264> expr<tokenIndex=266>)+ 'esac'<tokenIndex=270> 
+        | 'new'<tokenIndex=274> TYPE<tokenIndex=276> 
+        | 'isvoid'<tokenIndex=280> expr<tokenIndex=282,p=16> 
+        | '~'<tokenIndex=318>expr<tokenIndex=319,p=11> 
+        | 'not'<tokenIndex=347> expr<tokenIndex=349,p=7> 
+        | '('<tokenIndex=353>expr<tokenIndex=354>')'<tokenIndex=355> 
+        | ID<tokenIndex=359>{
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } 
+        | INTEGER<tokenIndex=364> 
+        | STRING<tokenIndex=368> 
+        | 'true'<tokenIndex=372> 
+        | 'false'<tokenIndex=376> 
+        )
+        (
+          {self.precpred(self._ctx, 15)}?<p=15> '+'<tokenIndex=288> expr<tokenIndex=290,p=16>
+                  | {self.precpred(self._ctx, 14)}?<p=14> '-'<tokenIndex=296> expr<tokenIndex=298,p=15>
+                  | {self.precpred(self._ctx, 13)}?<p=13> '*'<tokenIndex=304> expr<tokenIndex=306,p=14>
+                  | {self.precpred(self._ctx, 12)}?<p=12> '/'<tokenIndex=312> expr<tokenIndex=314,p=13>
+                  | {self.precpred(self._ctx, 10)}?<p=10> '<'<tokenIndex=325> expr<tokenIndex=327,p=11>
+                  | {self.precpred(self._ctx, 9)}?<p=9> '<='<tokenIndex=333> expr<tokenIndex=335,p=10>
+                  | {self.precpred(self._ctx, 8)}?<p=8> '='<tokenIndex=341> expr<tokenIndex=343,p=9>
+                  | {self.precpred(self._ctx, 24)}?<p=24> ('@'<tokenIndex=130>TYPE<tokenIndex=131>)?'.'<tokenIndex=134>ID<tokenIndex=135>'('<tokenIndex=136>(expr<tokenIndex=138> (','<tokenIndex=141>expr<tokenIndex=142>)*)?')'<tokenIndex=147>
+        )*
+    ;
+2022-06-10 19:15:52:705 grammar LogManager.java:25 added: (RULE expr (BLOCK (ALT (BLOCK (ALT {} (ID (ELEMENT_OPTIONS (= tokenIndex 118))) {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } ('<-' (ELEMENT_OPTIONS (= tokenIndex 121))) (expr (ELEMENT_OPTIONS (= tokenIndex 123) (= p 25)))) (ALT (ID (ELEMENT_OPTIONS (= tokenIndex 151))) {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } ('(' (ELEMENT_OPTIONS (= tokenIndex 154))) (? (BLOCK (ALT (expr (ELEMENT_OPTIONS (= tokenIndex 156))) (* (BLOCK (ALT (',' (ELEMENT_OPTIONS (= tokenIndex 159))) (expr (ELEMENT_OPTIONS (= tokenIndex 161))))))))) (')' (ELEMENT_OPTIONS (= tokenIndex 166)))) (ALT ('if' (ELEMENT_OPTIONS (= tokenIndex 170))) (expr (ELEMENT_OPTIONS (= tokenIndex 172))) ('then' (ELEMENT_OPTIONS (= tokenIndex 174))) (expr (ELEMENT_OPTIONS (= tokenIndex 176))) ('else' (ELEMENT_OPTIONS (= tokenIndex 178))) (expr (ELEMENT_OPTIONS (= tokenIndex 180))) ('fi' (ELEMENT_OPTIONS (= tokenIndex 182)))) (ALT ('while' (ELEMENT_OPTIONS (= tokenIndex 186))) (expr (ELEMENT_OPTIONS (= tokenIndex 188))) ('loop' (ELEMENT_OPTIONS (= tokenIndex 190))) (expr (ELEMENT_OPTIONS (= tokenIndex 192))) ('pool' (ELEMENT_OPTIONS (= tokenIndex 194)))) (ALT ('{' (ELEMENT_OPTIONS (= tokenIndex 198))) (+ (BLOCK (ALT (expr (ELEMENT_OPTIONS (= tokenIndex 200))) (';' (ELEMENT_OPTIONS (= tokenIndex 202)))))) ('}' (ELEMENT_OPTIONS (= tokenIndex 205)))) (ALT ('let' (ELEMENT_OPTIONS (= tokenIndex 209))) (ID (ELEMENT_OPTIONS (= tokenIndex 211))) {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } (':' (ELEMENT_OPTIONS (= tokenIndex 214))) (TYPE (ELEMENT_OPTIONS (= tokenIndex 216))) (? (BLOCK (ALT ('<-' (ELEMENT_OPTIONS (= tokenIndex 219))) (expr (ELEMENT_OPTIONS (= tokenIndex 221)))))) (* (BLOCK (ALT (',' (ELEMENT_OPTIONS (= tokenIndex 226))) (ID (ELEMENT_OPTIONS (= tokenIndex 228))) {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } (':' (ELEMENT_OPTIONS (= tokenIndex 231))) (TYPE (ELEMENT_OPTIONS (= tokenIndex 233))) (? (BLOCK (ALT ('<-' (ELEMENT_OPTIONS (= tokenIndex 236))) (expr (ELEMENT_OPTIONS (= tokenIndex 238))))))))) ('in' (ELEMENT_OPTIONS (= tokenIndex 244))) (expr (ELEMENT_OPTIONS (= tokenIndex 246) (= p 19)))) (ALT ('case' (ELEMENT_OPTIONS (= tokenIndex 250))) (expr (ELEMENT_OPTIONS (= tokenIndex 252))) ('of' (ELEMENT_OPTIONS (= tokenIndex 254))) (+ (BLOCK (ALT (ID (ELEMENT_OPTIONS (= tokenIndex 257))) {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               } (':' (ELEMENT_OPTIONS (= tokenIndex 260))) (TYPE (ELEMENT_OPTIONS (= tokenIndex 262))) ('=>' (ELEMENT_OPTIONS (= tokenIndex 264))) (expr (ELEMENT_OPTIONS (= tokenIndex 266)))))) ('esac' (ELEMENT_OPTIONS (= tokenIndex 270)))) (ALT ('new' (ELEMENT_OPTIONS (= tokenIndex 274))) (TYPE (ELEMENT_OPTIONS (= tokenIndex 276)))) (ALT ('isvoid' (ELEMENT_OPTIONS (= tokenIndex 280))) (expr (ELEMENT_OPTIONS (= tokenIndex 282) (= p 16)))) (ALT ('~' (ELEMENT_OPTIONS (= tokenIndex 318))) (expr (ELEMENT_OPTIONS (= tokenIndex 319) (= p 11)))) (ALT ('not' (ELEMENT_OPTIONS (= tokenIndex 347))) (expr (ELEMENT_OPTIONS (= tokenIndex 349) (= p 7)))) (ALT ('(' (ELEMENT_OPTIONS (= tokenIndex 353))) (expr (ELEMENT_OPTIONS (= tokenIndex 354))) (')' (ELEMENT_OPTIONS (= tokenIndex 355)))) (ALT (ID (ELEMENT_OPTIONS (= tokenIndex 359))) {
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               }) (ALT (INTEGER (ELEMENT_OPTIONS (= tokenIndex 364)))) (ALT (STRING (ELEMENT_OPTIONS (= tokenIndex 368)))) (ALT ('true' (ELEMENT_OPTIONS (= tokenIndex 372)))) (ALT ('false' (ELEMENT_OPTIONS (= tokenIndex 376))))) (* (BLOCK (ALT ({self.precpred(self._ctx, 15)}? (ELEMENT_OPTIONS (= p 15))) ('+' (ELEMENT_OPTIONS (= tokenIndex 288))) (expr (ELEMENT_OPTIONS (= tokenIndex 290) (= p 16)))) (ALT ({self.precpred(self._ctx, 14)}? (ELEMENT_OPTIONS (= p 14))) ('-' (ELEMENT_OPTIONS (= tokenIndex 296))) (expr (ELEMENT_OPTIONS (= tokenIndex 298) (= p 15)))) (ALT ({self.precpred(self._ctx, 13)}? (ELEMENT_OPTIONS (= p 13))) ('*' (ELEMENT_OPTIONS (= tokenIndex 304))) (expr (ELEMENT_OPTIONS (= tokenIndex 306) (= p 14)))) (ALT ({self.precpred(self._ctx, 12)}? (ELEMENT_OPTIONS (= p 12))) ('/' (ELEMENT_OPTIONS (= tokenIndex 312))) (expr (ELEMENT_OPTIONS (= tokenIndex 314) (= p 13)))) (ALT ({self.precpred(self._ctx, 10)}? (ELEMENT_OPTIONS (= p 10))) ('<' (ELEMENT_OPTIONS (= tokenIndex 325))) (expr (ELEMENT_OPTIONS (= tokenIndex 327) (= p 11)))) (ALT ({self.precpred(self._ctx, 9)}? (ELEMENT_OPTIONS (= p 9))) ('<=' (ELEMENT_OPTIONS (= tokenIndex 333))) (expr (ELEMENT_OPTIONS (= tokenIndex 335) (= p 10)))) (ALT ({self.precpred(self._ctx, 8)}? (ELEMENT_OPTIONS (= p 8))) ('=' (ELEMENT_OPTIONS (= tokenIndex 341))) (expr (ELEMENT_OPTIONS (= tokenIndex 343) (= p 9)))) (ALT ({self.precpred(self._ctx, 24)}? (ELEMENT_OPTIONS (= p 24))) (? (BLOCK (ALT ('@' (ELEMENT_OPTIONS (= tokenIndex 130))) (TYPE (ELEMENT_OPTIONS (= tokenIndex 131)))))) ('.' (ELEMENT_OPTIONS (= tokenIndex 134))) (ID (ELEMENT_OPTIONS (= tokenIndex 135))) ('(' (ELEMENT_OPTIONS (= tokenIndex 136))) (? (BLOCK (ALT (expr (ELEMENT_OPTIONS (= tokenIndex 138))) (* (BLOCK (ALT (',' (ELEMENT_OPTIONS (= tokenIndex 141))) (expr (ELEMENT_OPTIONS (= tokenIndex 142))))))))) (')' (ELEMENT_OPTIONS (= tokenIndex 147)))))))))
+2022-06-10 19:15:52:707 semantics LogManager.java:25 tokens={EOF=-1, T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, T__30=31, T__31=32, T__32=33, T__33=34, T__34=35, T__35=36, T__36=37, T__37=38, ID=39, TYPE=40, STRING=41, INTEGER=42, WS=43, LINE_COMMENT=44, COMMENT=45}
+2022-06-10 19:15:52:707 semantics LogManager.java:25 strings={';'=1, 'class'=2, 'inherits'=3, '{'=4, '}'=5, '('=6, ','=7, ')'=8, ':'=9, '<-'=10, '@'=11, '.'=12, 'if'=13, 'then'=14, 'else'=15, 'fi'=16, 'while'=17, 'loop'=18, 'pool'=19, 'let'=20, 'in'=21, 'case'=22, 'of'=23, '=>'=24, 'esac'=25, 'new'=26, 'isvoid'=27, '+'=28, '-'=29, '*'=30, '/'=31, '~'=32, '<'=33, '<='=34, '='=35, 'not'=36, 'true'=37, 'false'=38}
+2022-06-10 19:15:52:720 LL1 LogManager.java:25 
+DECISION 0 in rule prog
+2022-06-10 19:15:52:720 LL1 LogManager.java:25 look=[2, <EOF>]
+2022-06-10 19:15:52:721 LL1 LogManager.java:25 LL(1)? true
+2022-06-10 19:15:52:721 LL1 LogManager.java:25 
+DECISION 1 in rule class
+2022-06-10 19:15:52:721 LL1 LogManager.java:25 look=[3, 4]
+2022-06-10 19:15:52:721 LL1 LogManager.java:25 LL(1)? true
+2022-06-10 19:15:52:721 LL1 LogManager.java:25 
+DECISION 2 in rule class
+2022-06-10 19:15:52:721 LL1 LogManager.java:25 look=[39, 5]
+2022-06-10 19:15:52:721 LL1 LogManager.java:25 LL(1)? true
+2022-06-10 19:15:52:721 LL1 LogManager.java:25 
+DECISION 3 in rule feature
+2022-06-10 19:15:52:721 LL1 LogManager.java:25 look=[7, 8]
+2022-06-10 19:15:52:721 LL1 LogManager.java:25 LL(1)? true
+2022-06-10 19:15:52:721 LL1 LogManager.java:25 
+DECISION 4 in rule feature
+2022-06-10 19:15:52:721 LL1 LogManager.java:25 look=[39, 8]
+2022-06-10 19:15:52:721 LL1 LogManager.java:25 LL(1)? true
+2022-06-10 19:15:52:721 LL1 LogManager.java:25 
+DECISION 5 in rule feature
+2022-06-10 19:15:52:721 LL1 LogManager.java:25 look=[10, 1]
+2022-06-10 19:15:52:722 LL1 LogManager.java:25 LL(1)? true
+2022-06-10 19:15:52:722 LL1 LogManager.java:25 
+DECISION 6 in rule feature
+2022-06-10 19:15:52:722 LL1 LogManager.java:25 look=[39, 39]
+2022-06-10 19:15:52:722 LL1 LogManager.java:25 LL(1)? false
+2022-06-10 19:15:52:722 LL1 LogManager.java:25 
+DECISION 7 in rule expr
+2022-06-10 19:15:52:722 LL1 LogManager.java:25 look=[7, 8]
+2022-06-10 19:15:52:722 LL1 LogManager.java:25 LL(1)? true
+2022-06-10 19:15:52:722 LL1 LogManager.java:25 
+DECISION 8 in rule expr
+2022-06-10 19:15:52:722 LL1 LogManager.java:25 look=[{4, 6, 13, 17, 20, 22, 26..27, 32, 36..39, 41..42}, 8]
+2022-06-10 19:15:52:722 LL1 LogManager.java:25 LL(1)? true
+2022-06-10 19:15:52:722 LL1 LogManager.java:25 
+DECISION 9 in rule expr
+2022-06-10 19:15:52:723 LL1 LogManager.java:25 look=[{4, 6, 13, 17, 20, 22, 26..27, 32, 36..39, 41..42}, 5]
+2022-06-10 19:15:52:723 LL1 LogManager.java:25 LL(1)? true
+2022-06-10 19:15:52:723 LL1 LogManager.java:25 
+DECISION 10 in rule expr
+2022-06-10 19:15:52:723 LL1 LogManager.java:25 look=[10, {7, 21}]
+2022-06-10 19:15:52:723 LL1 LogManager.java:25 LL(1)? true
+2022-06-10 19:15:52:723 LL1 LogManager.java:25 
+DECISION 11 in rule expr
+2022-06-10 19:15:52:723 LL1 LogManager.java:25 look=[10, {7, 21}]
+2022-06-10 19:15:52:723 LL1 LogManager.java:25 LL(1)? true
+2022-06-10 19:15:52:723 LL1 LogManager.java:25 
+DECISION 12 in rule expr
+2022-06-10 19:15:52:723 LL1 LogManager.java:25 look=[7, 21]
+2022-06-10 19:15:52:723 LL1 LogManager.java:25 LL(1)? true
+2022-06-10 19:15:52:723 LL1 LogManager.java:25 
+DECISION 13 in rule expr
+2022-06-10 19:15:52:723 LL1 LogManager.java:25 look=[39, 25]
+2022-06-10 19:15:52:723 LL1 LogManager.java:25 LL(1)? true
+2022-06-10 19:15:52:723 LL1 LogManager.java:25 
+DECISION 14 in rule expr
+2022-06-10 19:15:52:723 LL1 LogManager.java:25 look=[39, 39, 13, 17, 4, 20, 22, 26, 27, 32, 36, 6, 39, 42, 41, 37, 38]
+2022-06-10 19:15:52:723 LL1 LogManager.java:25 LL(1)? false
+2022-06-10 19:15:52:724 LL1 LogManager.java:25 
+DECISION 15 in rule expr
+2022-06-10 19:15:52:724 LL1 LogManager.java:25 look=[11, 12]
+2022-06-10 19:15:52:724 LL1 LogManager.java:25 LL(1)? true
+2022-06-10 19:15:52:724 LL1 LogManager.java:25 
+DECISION 16 in rule expr
+2022-06-10 19:15:52:724 LL1 LogManager.java:25 look=[7, 8]
+2022-06-10 19:15:52:724 LL1 LogManager.java:25 LL(1)? true
+2022-06-10 19:15:52:724 LL1 LogManager.java:25 
+DECISION 17 in rule expr
+2022-06-10 19:15:52:724 LL1 LogManager.java:25 look=[{4, 6, 13, 17, 20, 22, 26..27, 32, 36..39, 41..42}, 8]
+2022-06-10 19:15:52:724 LL1 LogManager.java:25 LL(1)? true
+2022-06-10 19:15:52:724 LL1 LogManager.java:25 
+DECISION 18 in rule expr
+2022-06-10 19:15:52:724 LL1 LogManager.java:25 look=[null, null, null, null, null, null, null, null]
+2022-06-10 19:15:52:724 LL1 LogManager.java:25 LL(1)? false
+2022-06-10 19:15:52:724 LL1 LogManager.java:25 
+DECISION 19 in rule expr
+2022-06-10 19:15:52:724 LL1 LogManager.java:25 look=[null, null]
+2022-06-10 19:15:52:725 LL1 LogManager.java:25 LL(1)? false
+2022-06-10 19:15:52:745 action-translator LogManager.java:25 translate 
+    semantico=AnalisadorSemantico()
+    semantico.tabela={}
+    nomeFolha=""
+    valorFolha=""
+
+2022-06-10 19:15:52:745 action-translator LogManager.java:25 translate 
+from analisadorSemantico import AnalisadorSemantico
+from variavel import Variavel
+
+2022-06-10 19:15:52:756 action-translator LogManager.java:25 translate 
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               
+2022-06-10 19:15:52:756 action-translator LogManager.java:25 translate 
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               
+2022-06-10 19:15:52:757 action-translator LogManager.java:25 translate 
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               
+2022-06-10 19:15:52:759 action-translator LogManager.java:25 translate 
+2022-06-10 19:15:52:759 action-translator LogManager.java:25 translate 
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               
+2022-06-10 19:15:52:759 action-translator LogManager.java:25 translate 
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               
+2022-06-10 19:15:52:760 action-translator LogManager.java:25 translate 
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               
+2022-06-10 19:15:52:761 action-translator LogManager.java:25 translate 
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               
+2022-06-10 19:15:52:762 action-translator LogManager.java:25 translate 
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               
+2022-06-10 19:15:52:762 action-translator LogManager.java:25 translate 
+               nomeFolha= _input.LT(-1).getText()
+               if (semantico.existe(semantico,nomeFolha)==False):
+	                     semantico.adicionar(semantico,nomeFolha,valorFolha)
+	                     print("folha adicionada")
+
+	           else:
+	                 print("Variavel ja declarada")
+               
+2022-06-10 19:15:52:763 action-translator LogManager.java:25 translate self.precpred(self._ctx, 15)
+2022-06-10 19:15:52:763 action-translator LogManager.java:25 translate self.precpred(self._ctx, 14)
+2022-06-10 19:15:52:763 action-translator LogManager.java:25 translate self.precpred(self._ctx, 13)
+2022-06-10 19:15:52:764 action-translator LogManager.java:25 translate self.precpred(self._ctx, 12)
+2022-06-10 19:15:52:764 action-translator LogManager.java:25 translate self.precpred(self._ctx, 10)
+2022-06-10 19:15:52:764 action-translator LogManager.java:25 translate self.precpred(self._ctx, 9)
+2022-06-10 19:15:52:764 action-translator LogManager.java:25 translate self.precpred(self._ctx, 8)
+2022-06-10 19:15:52:764 action-translator LogManager.java:25 translate self.precpred(self._ctx, 24)
+2022-06-10 19:15:52:766 action-translator LogManager.java:25 translate self.precpred(self._ctx, 15)
+2022-06-10 19:15:52:766 action-translator LogManager.java:25 translate self.precpred(self._ctx, 14)
+2022-06-10 19:15:52:766 action-translator LogManager.java:25 translate self.precpred(self._ctx, 13)
+2022-06-10 19:15:52:766 action-translator LogManager.java:25 translate self.precpred(self._ctx, 12)
+2022-06-10 19:15:52:766 action-translator LogManager.java:25 translate self.precpred(self._ctx, 10)
+2022-06-10 19:15:52:766 action-translator LogManager.java:25 translate self.precpred(self._ctx, 9)
+2022-06-10 19:15:52:766 action-translator LogManager.java:25 translate self.precpred(self._ctx, 8)
+2022-06-10 19:15:52:767 action-translator LogManager.java:25 translate self.precpred(self._ctx, 24)
+2022-06-10 19:15:52:791 action-translator LogManager.java:25 translate 
+    semantico=AnalisadorSemantico()
+    semantico.tabela={}
+    nomeFolha=""
+    valorFolha=""
+
+2022-06-10 19:15:52:791 action-translator LogManager.java:25 translate 
+from analisadorSemantico import AnalisadorSemantico
+from variavel import Variavel
+
+2022-06-10 19:15:52:791 action-translator LogManager.java:25 translate 
+from analisadorSemantico import AnalisadorSemantico
+from variavel import Variavel
+

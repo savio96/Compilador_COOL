@@ -19,13 +19,10 @@ class TokenCool():
     """
         def getTipo(self):
         return self.tipo
-
     def setTipo(self,tipo):
         self.tipo=tipo
-
     def getTexto(self):
         return self.texto
-
     def setTexto(self,texto):
         self.texto=texto
     """

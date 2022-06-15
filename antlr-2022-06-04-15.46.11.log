@@ -1,0 +1,266 @@
+2022-06-04 15:46:11:130 grammar LogManager.java:25 before: (COMBINED_GRAMMAR Cool (@ header {
+from analisadorSemantico import AnalisadorSemantico
+}) (@ members {
+    semantico=AnalisadorSemantico()
+    semantico.tabela={}
+    varNome=""
+    varValue=None
+}) (RULES (RULE prog (BLOCK (ALT (+ (BLOCK (ALT class ';')))))) (RULE class (BLOCK (ALT 'class' TYPE (? (BLOCK (ALT 'inherits' TYPE))) '{' (* (BLOCK (ALT feature ';'))) '}'))) (RULE feature (BLOCK (ALT ID {
+               varNome= input.LT(-1).getText()
+               varValue=None
+               if (semantico.existe(tabela,varNome)==False){
+	                     semantico.adicionar(semantico,varNome,varValue)
+	                  }
+	           else{
+	                  print("Variavel ja declarada")
+	                }
+               } '(' (? (BLOCK (ALT formal (* (BLOCK (ALT ',' formal)))))) ')' ':' TYPE '{' expr '}') (ALT ID {
+               varNome= input.LT(-1).getText()
+               varValue=None
+               if (semantico.existe(tabela,varNome)==False){
+	                     semantico.adicionar(semantico,varNome,varValue)
+	                  }
+	           else{
+	                  print("Variavel ja declarada")
+	                }
+               } ':' TYPE (? (BLOCK (ALT '<-' expr)))))) (RULE formal (BLOCK (ALT ID ':' TYPE))) (RULE expr (BLOCK (ALT ID '<-' expr) (ALT expr (? (BLOCK (ALT '@' TYPE))) '.' ID '(' (? (BLOCK (ALT expr (* (BLOCK (ALT ',' expr)))))) ')') (ALT ID '(' (? (BLOCK (ALT expr (* (BLOCK (ALT ',' expr)))))) ')') (ALT 'if' expr 'then' expr 'else' expr 'fi') (ALT 'while' expr 'loop' expr 'pool') (ALT '{' (+ (BLOCK (ALT expr ';'))) '}') (ALT 'let' ID ':' TYPE (? (BLOCK (ALT '<-' expr))) (* (BLOCK (ALT ',' ID ':' TYPE (? (BLOCK (ALT '<-' expr)))))) 'in' expr) (ALT 'case' expr 'of' (+ (BLOCK (ALT ID ':' TYPE '=>' expr))) 'esac') (ALT 'new' TYPE) (ALT 'isvoid' expr) (ALT expr '+' expr) (ALT expr '-' expr) (ALT expr '*' expr) (ALT expr '/' expr) (ALT '~' expr) (ALT expr '<' expr) (ALT expr '<=' expr) (ALT expr '=' expr) (ALT 'not' expr) (ALT '(' expr ')') (ALT ID) (ALT INTEGER) (ALT STRING) (ALT 'true') (ALT 'false'))) (RULE ID (BLOCK (ALT (BLOCK (ALT (.. 'a' 'z'))) (* (BLOCK (ALT (.. 'a' 'z')) (ALT (.. 'A' 'Z')) (ALT '_') (ALT (.. '0' '9'))))))) (RULE TYPE (BLOCK (ALT (BLOCK (ALT (.. 'A' 'Z'))) (* (BLOCK (ALT (.. 'a' 'z')) (ALT (.. 'A' 'Z')) (ALT '_') (ALT (.. '0' '9'))))))) (RULE STRING (BLOCK (ALT '"' (* (BLOCK (ALT ESC) (ALT .))) '"'))) (RULE INTEGER (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \r\b\t\n\f])))) (LEXER_ACTION_CALL channel HIDDEN)))) (RULE LINE_COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '--' (* (BLOCK (ALT .))) '\n') (LEXER_ACTION_CALL channel HIDDEN)))) (RULE COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '(*' (* (BLOCK (ALT .))) '*)') (LEXER_ACTION_CALL channel HIDDEN)))) (RULE ESC (RULEMODIFIERS fragment) (BLOCK (ALT '\\' [btnr"\\])))))
+2022-06-04 15:46:11:140 grammar LogManager.java:25 after: (COMBINED_GRAMMAR Cool (@ header {
+from analisadorSemantico import AnalisadorSemantico
+}) (@ members {
+    semantico=AnalisadorSemantico()
+    semantico.tabela={}
+    varNome=""
+    varValue=None
+}) (RULES (RULE prog (BLOCK (ALT (+ (BLOCK (ALT class ';')))))) (RULE class (BLOCK (ALT 'class' TYPE (? (BLOCK (ALT 'inherits' TYPE))) '{' (* (BLOCK (ALT feature ';'))) '}'))) (RULE feature (BLOCK (ALT ID {
+               varNome= input.LT(-1).getText()
+               varValue=None
+               if (semantico.existe(tabela,varNome)==False){
+	                     semantico.adicionar(semantico,varNome,varValue)
+	                  }
+	           else{
+	                  print("Variavel ja declarada")
+	                }
+               } '(' (? (BLOCK (ALT formal (* (BLOCK (ALT ',' formal)))))) ')' ':' TYPE '{' expr '}') (ALT ID {
+               varNome= input.LT(-1).getText()
+               varValue=None
+               if (semantico.existe(tabela,varNome)==False){
+	                     semantico.adicionar(semantico,varNome,varValue)
+	                  }
+	           else{
+	                  print("Variavel ja declarada")
+	                }
+               } ':' TYPE (? (BLOCK (ALT '<-' expr)))))) (RULE formal (BLOCK (ALT ID ':' TYPE))) (RULE expr (BLOCK (ALT ID '<-' expr) (ALT expr (? (BLOCK (ALT '@' TYPE))) '.' ID '(' (? (BLOCK (ALT expr (* (BLOCK (ALT ',' expr)))))) ')') (ALT ID '(' (? (BLOCK (ALT expr (* (BLOCK (ALT ',' expr)))))) ')') (ALT 'if' expr 'then' expr 'else' expr 'fi') (ALT 'while' expr 'loop' expr 'pool') (ALT '{' (+ (BLOCK (ALT expr ';'))) '}') (ALT 'let' ID ':' TYPE (? (BLOCK (ALT '<-' expr))) (* (BLOCK (ALT ',' ID ':' TYPE (? (BLOCK (ALT '<-' expr)))))) 'in' expr) (ALT 'case' expr 'of' (+ (BLOCK (ALT ID ':' TYPE '=>' expr))) 'esac') (ALT 'new' TYPE) (ALT 'isvoid' expr) (ALT expr '+' expr) (ALT expr '-' expr) (ALT expr '*' expr) (ALT expr '/' expr) (ALT '~' expr) (ALT expr '<' expr) (ALT expr '<=' expr) (ALT expr '=' expr) (ALT 'not' expr) (ALT '(' expr ')') (ALT ID) (ALT INTEGER) (ALT STRING) (ALT 'true') (ALT 'false'))) (RULE ID (BLOCK (ALT (BLOCK (ALT (.. 'a' 'z'))) (* (BLOCK (ALT (SET (.. 'a' 'z') (.. 'A' 'Z') '_' (.. '0' '9')))))))) (RULE TYPE (BLOCK (ALT (BLOCK (ALT (.. 'A' 'Z'))) (* (BLOCK (ALT (SET (.. 'a' 'z') (.. 'A' 'Z') '_' (.. '0' '9')))))))) (RULE STRING (BLOCK (ALT '"' (* (BLOCK (ALT ESC) (ALT .))) '"'))) (RULE INTEGER (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \r\b\t\n\f])))) (LEXER_ACTION_CALL channel HIDDEN)))) (RULE LINE_COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '--' (* (BLOCK (ALT .))) '\n') (LEXER_ACTION_CALL channel HIDDEN)))) (RULE COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '(*' (* (BLOCK (ALT .))) '*)') (LEXER_ACTION_CALL channel HIDDEN)))) (RULE ESC (RULEMODIFIERS fragment) (BLOCK (ALT '\\' [btnr"\\])))))
+2022-06-04 15:46:11:154 grammar LogManager.java:25 after extract implicit lexer =(COMBINED_GRAMMAR Cool (@ header {
+from analisadorSemantico import AnalisadorSemantico
+}) (@ members {
+    semantico=AnalisadorSemantico()
+    semantico.tabela={}
+    varNome=""
+    varValue=None
+}) (RULES (RULE prog (BLOCK (ALT (+ (BLOCK (ALT class ';')))))) (RULE class (BLOCK (ALT 'class' TYPE (? (BLOCK (ALT 'inherits' TYPE))) '{' (* (BLOCK (ALT feature ';'))) '}'))) (RULE feature (BLOCK (ALT ID {
+               varNome= input.LT(-1).getText()
+               varValue=None
+               if (semantico.existe(tabela,varNome)==False){
+	                     semantico.adicionar(semantico,varNome,varValue)
+	                  }
+	           else{
+	                  print("Variavel ja declarada")
+	                }
+               } '(' (? (BLOCK (ALT formal (* (BLOCK (ALT ',' formal)))))) ')' ':' TYPE '{' expr '}') (ALT ID {
+               varNome= input.LT(-1).getText()
+               varValue=None
+               if (semantico.existe(tabela,varNome)==False){
+	                     semantico.adicionar(semantico,varNome,varValue)
+	                  }
+	           else{
+	                  print("Variavel ja declarada")
+	                }
+               } ':' TYPE (? (BLOCK (ALT '<-' expr)))))) (RULE formal (BLOCK (ALT ID ':' TYPE))) (RULE expr (BLOCK (ALT ID '<-' expr) (ALT expr (? (BLOCK (ALT '@' TYPE))) '.' ID '(' (? (BLOCK (ALT expr (* (BLOCK (ALT ',' expr)))))) ')') (ALT ID '(' (? (BLOCK (ALT expr (* (BLOCK (ALT ',' expr)))))) ')') (ALT 'if' expr 'then' expr 'else' expr 'fi') (ALT 'while' expr 'loop' expr 'pool') (ALT '{' (+ (BLOCK (ALT expr ';'))) '}') (ALT 'let' ID ':' TYPE (? (BLOCK (ALT '<-' expr))) (* (BLOCK (ALT ',' ID ':' TYPE (? (BLOCK (ALT '<-' expr)))))) 'in' expr) (ALT 'case' expr 'of' (+ (BLOCK (ALT ID ':' TYPE '=>' expr))) 'esac') (ALT 'new' TYPE) (ALT 'isvoid' expr) (ALT expr '+' expr) (ALT expr '-' expr) (ALT expr '*' expr) (ALT expr '/' expr) (ALT '~' expr) (ALT expr '<' expr) (ALT expr '<=' expr) (ALT expr '=' expr) (ALT 'not' expr) (ALT '(' expr ')') (ALT ID) (ALT INTEGER) (ALT STRING) (ALT 'true') (ALT 'false')))))
+2022-06-04 15:46:11:154 grammar LogManager.java:25 lexer =(LEXER_GRAMMAR CoolLexer (@ header {
+from analisadorSemantico import AnalisadorSemantico
+}) (@ members {
+    semantico=AnalisadorSemantico()
+    semantico.tabela={}
+    varNome=""
+    varValue=None
+}) (RULES (RULE T__0 (BLOCK (ALT ';'))) (RULE T__1 (BLOCK (ALT 'class'))) (RULE T__2 (BLOCK (ALT 'inherits'))) (RULE T__3 (BLOCK (ALT '{'))) (RULE T__4 (BLOCK (ALT '}'))) (RULE T__5 (BLOCK (ALT '('))) (RULE T__6 (BLOCK (ALT ','))) (RULE T__7 (BLOCK (ALT ')'))) (RULE T__8 (BLOCK (ALT ':'))) (RULE T__9 (BLOCK (ALT '<-'))) (RULE T__10 (BLOCK (ALT '@'))) (RULE T__11 (BLOCK (ALT '.'))) (RULE T__12 (BLOCK (ALT 'if'))) (RULE T__13 (BLOCK (ALT 'then'))) (RULE T__14 (BLOCK (ALT 'else'))) (RULE T__15 (BLOCK (ALT 'fi'))) (RULE T__16 (BLOCK (ALT 'while'))) (RULE T__17 (BLOCK (ALT 'loop'))) (RULE T__18 (BLOCK (ALT 'pool'))) (RULE T__19 (BLOCK (ALT 'let'))) (RULE T__20 (BLOCK (ALT 'in'))) (RULE T__21 (BLOCK (ALT 'case'))) (RULE T__22 (BLOCK (ALT 'of'))) (RULE T__23 (BLOCK (ALT '=>'))) (RULE T__24 (BLOCK (ALT 'esac'))) (RULE T__25 (BLOCK (ALT 'new'))) (RULE T__26 (BLOCK (ALT 'isvoid'))) (RULE T__27 (BLOCK (ALT '+'))) (RULE T__28 (BLOCK (ALT '-'))) (RULE T__29 (BLOCK (ALT '*'))) (RULE T__30 (BLOCK (ALT '/'))) (RULE T__31 (BLOCK (ALT '~'))) (RULE T__32 (BLOCK (ALT '<'))) (RULE T__33 (BLOCK (ALT '<='))) (RULE T__34 (BLOCK (ALT '='))) (RULE T__35 (BLOCK (ALT 'not'))) (RULE T__36 (BLOCK (ALT 'true'))) (RULE T__37 (BLOCK (ALT 'false'))) (RULE ID (BLOCK (ALT (BLOCK (ALT (.. 'a' 'z'))) (* (BLOCK (ALT (SET (.. 'a' 'z') (.. 'A' 'Z') '_' (.. '0' '9')))))))) (RULE TYPE (BLOCK (ALT (BLOCK (ALT (.. 'A' 'Z'))) (* (BLOCK (ALT (SET (.. 'a' 'z') (.. 'A' 'Z') '_' (.. '0' '9')))))))) (RULE STRING (BLOCK (ALT '"' (* (BLOCK (ALT ESC) (ALT .))) '"'))) (RULE INTEGER (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \r\b\t\n\f])))) (LEXER_ACTION_CALL channel HIDDEN)))) (RULE LINE_COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '--' (* (BLOCK (ALT .))) '\n') (LEXER_ACTION_CALL channel HIDDEN)))) (RULE COMMENT (BLOCK (LEXER_ALT_ACTION (ALT '(*' (* (BLOCK (ALT .))) '*)') (LEXER_ACTION_CALL channel HIDDEN)))) (RULE ESC (RULEMODIFIERS fragment) (BLOCK (ALT '\\' [btnr"\\])))))
+2022-06-04 15:46:11:253 action-translator LogManager.java:25 translate 
+    semantico=AnalisadorSemantico()
+    semantico.tabela={}
+    varNome=""
+    varValue=None
+
+2022-06-04 15:46:11:253 action-translator LogManager.java:25 translate 
+from analisadorSemantico import AnalisadorSemantico
+
+2022-06-04 15:46:11:328 left-recursion LogManager.java:25 expr
+    :   ( {} ID<tokenIndex=117> '<-'<tokenIndex=119> expr<tokenIndex=121,p=25> 
+        | ID<tokenIndex=149> '('<tokenIndex=151>(expr<tokenIndex=153> (','<tokenIndex=156> expr<tokenIndex=158>)*)?')'<tokenIndex=163> 
+        | 'if'<tokenIndex=167> expr<tokenIndex=169> 'then'<tokenIndex=171> expr<tokenIndex=173> 'else'<tokenIndex=175> expr<tokenIndex=177> 'fi'<tokenIndex=179> 
+        | 'while'<tokenIndex=183> expr<tokenIndex=185> 'loop'<tokenIndex=187> expr<tokenIndex=189> 'pool'<tokenIndex=191> 
+        | '{'<tokenIndex=195>(expr<tokenIndex=197> ';'<tokenIndex=199>)+'}'<tokenIndex=202> 
+        | 'let'<tokenIndex=206> ID<tokenIndex=208> ':'<tokenIndex=210> TYPE<tokenIndex=212> ('<-'<tokenIndex=215> expr<tokenIndex=217>)? (','<tokenIndex=222> ID<tokenIndex=224> ':'<tokenIndex=226> TYPE<tokenIndex=228> ('<-'<tokenIndex=231> expr<tokenIndex=233>)?)* 'in'<tokenIndex=239> expr<tokenIndex=241,p=19> 
+        | 'case'<tokenIndex=245> expr<tokenIndex=247> 'of'<tokenIndex=249> (ID<tokenIndex=252> ':'<tokenIndex=254> TYPE<tokenIndex=256> '=>'<tokenIndex=258> expr<tokenIndex=260>)+ 'esac'<tokenIndex=264> 
+        | 'new'<tokenIndex=268> TYPE<tokenIndex=270> 
+        | 'isvoid'<tokenIndex=274> expr<tokenIndex=276,p=16> 
+        | '~'<tokenIndex=312>expr<tokenIndex=313,p=11> 
+        | 'not'<tokenIndex=341> expr<tokenIndex=343,p=7> 
+        | '('<tokenIndex=347>expr<tokenIndex=348>')'<tokenIndex=349> 
+        | ID<tokenIndex=353> 
+        | INTEGER<tokenIndex=357> 
+        | STRING<tokenIndex=361> 
+        | 'true'<tokenIndex=365> 
+        | 'false'<tokenIndex=369> 
+        )
+        (
+          {self.precpred(self._ctx, 15)}?<p=15> '+'<tokenIndex=282> expr<tokenIndex=284,p=16>
+                  | {self.precpred(self._ctx, 14)}?<p=14> '-'<tokenIndex=290> expr<tokenIndex=292,p=15>
+                  | {self.precpred(self._ctx, 13)}?<p=13> '*'<tokenIndex=298> expr<tokenIndex=300,p=14>
+                  | {self.precpred(self._ctx, 12)}?<p=12> '/'<tokenIndex=306> expr<tokenIndex=308,p=13>
+                  | {self.precpred(self._ctx, 10)}?<p=10> '<'<tokenIndex=319> expr<tokenIndex=321,p=11>
+                  | {self.precpred(self._ctx, 9)}?<p=9> '<='<tokenIndex=327> expr<tokenIndex=329,p=10>
+                  | {self.precpred(self._ctx, 8)}?<p=8> '='<tokenIndex=335> expr<tokenIndex=337,p=9>
+                  | {self.precpred(self._ctx, 24)}?<p=24> ('@'<tokenIndex=128>TYPE<tokenIndex=129>)?'.'<tokenIndex=132>ID<tokenIndex=133>'('<tokenIndex=134>(expr<tokenIndex=136> (','<tokenIndex=139>expr<tokenIndex=140>)*)?')'<tokenIndex=145>
+        )*
+    ;
+2022-06-04 15:46:11:341 grammar LogManager.java:25 added: (RULE expr (BLOCK (ALT (BLOCK (ALT {} (ID (ELEMENT_OPTIONS (= tokenIndex 117))) ('<-' (ELEMENT_OPTIONS (= tokenIndex 119))) (expr (ELEMENT_OPTIONS (= tokenIndex 121) (= p 25)))) (ALT (ID (ELEMENT_OPTIONS (= tokenIndex 149))) ('(' (ELEMENT_OPTIONS (= tokenIndex 151))) (? (BLOCK (ALT (expr (ELEMENT_OPTIONS (= tokenIndex 153))) (* (BLOCK (ALT (',' (ELEMENT_OPTIONS (= tokenIndex 156))) (expr (ELEMENT_OPTIONS (= tokenIndex 158))))))))) (')' (ELEMENT_OPTIONS (= tokenIndex 163)))) (ALT ('if' (ELEMENT_OPTIONS (= tokenIndex 167))) (expr (ELEMENT_OPTIONS (= tokenIndex 169))) ('then' (ELEMENT_OPTIONS (= tokenIndex 171))) (expr (ELEMENT_OPTIONS (= tokenIndex 173))) ('else' (ELEMENT_OPTIONS (= tokenIndex 175))) (expr (ELEMENT_OPTIONS (= tokenIndex 177))) ('fi' (ELEMENT_OPTIONS (= tokenIndex 179)))) (ALT ('while' (ELEMENT_OPTIONS (= tokenIndex 183))) (expr (ELEMENT_OPTIONS (= tokenIndex 185))) ('loop' (ELEMENT_OPTIONS (= tokenIndex 187))) (expr (ELEMENT_OPTIONS (= tokenIndex 189))) ('pool' (ELEMENT_OPTIONS (= tokenIndex 191)))) (ALT ('{' (ELEMENT_OPTIONS (= tokenIndex 195))) (+ (BLOCK (ALT (expr (ELEMENT_OPTIONS (= tokenIndex 197))) (';' (ELEMENT_OPTIONS (= tokenIndex 199)))))) ('}' (ELEMENT_OPTIONS (= tokenIndex 202)))) (ALT ('let' (ELEMENT_OPTIONS (= tokenIndex 206))) (ID (ELEMENT_OPTIONS (= tokenIndex 208))) (':' (ELEMENT_OPTIONS (= tokenIndex 210))) (TYPE (ELEMENT_OPTIONS (= tokenIndex 212))) (? (BLOCK (ALT ('<-' (ELEMENT_OPTIONS (= tokenIndex 215))) (expr (ELEMENT_OPTIONS (= tokenIndex 217)))))) (* (BLOCK (ALT (',' (ELEMENT_OPTIONS (= tokenIndex 222))) (ID (ELEMENT_OPTIONS (= tokenIndex 224))) (':' (ELEMENT_OPTIONS (= tokenIndex 226))) (TYPE (ELEMENT_OPTIONS (= tokenIndex 228))) (? (BLOCK (ALT ('<-' (ELEMENT_OPTIONS (= tokenIndex 231))) (expr (ELEMENT_OPTIONS (= tokenIndex 233))))))))) ('in' (ELEMENT_OPTIONS (= tokenIndex 239))) (expr (ELEMENT_OPTIONS (= tokenIndex 241) (= p 19)))) (ALT ('case' (ELEMENT_OPTIONS (= tokenIndex 245))) (expr (ELEMENT_OPTIONS (= tokenIndex 247))) ('of' (ELEMENT_OPTIONS (= tokenIndex 249))) (+ (BLOCK (ALT (ID (ELEMENT_OPTIONS (= tokenIndex 252))) (':' (ELEMENT_OPTIONS (= tokenIndex 254))) (TYPE (ELEMENT_OPTIONS (= tokenIndex 256))) ('=>' (ELEMENT_OPTIONS (= tokenIndex 258))) (expr (ELEMENT_OPTIONS (= tokenIndex 260)))))) ('esac' (ELEMENT_OPTIONS (= tokenIndex 264)))) (ALT ('new' (ELEMENT_OPTIONS (= tokenIndex 268))) (TYPE (ELEMENT_OPTIONS (= tokenIndex 270)))) (ALT ('isvoid' (ELEMENT_OPTIONS (= tokenIndex 274))) (expr (ELEMENT_OPTIONS (= tokenIndex 276) (= p 16)))) (ALT ('~' (ELEMENT_OPTIONS (= tokenIndex 312))) (expr (ELEMENT_OPTIONS (= tokenIndex 313) (= p 11)))) (ALT ('not' (ELEMENT_OPTIONS (= tokenIndex 341))) (expr (ELEMENT_OPTIONS (= tokenIndex 343) (= p 7)))) (ALT ('(' (ELEMENT_OPTIONS (= tokenIndex 347))) (expr (ELEMENT_OPTIONS (= tokenIndex 348))) (')' (ELEMENT_OPTIONS (= tokenIndex 349)))) (ALT (ID (ELEMENT_OPTIONS (= tokenIndex 353)))) (ALT (INTEGER (ELEMENT_OPTIONS (= tokenIndex 357)))) (ALT (STRING (ELEMENT_OPTIONS (= tokenIndex 361)))) (ALT ('true' (ELEMENT_OPTIONS (= tokenIndex 365)))) (ALT ('false' (ELEMENT_OPTIONS (= tokenIndex 369))))) (* (BLOCK (ALT ({self.precpred(self._ctx, 15)}? (ELEMENT_OPTIONS (= p 15))) ('+' (ELEMENT_OPTIONS (= tokenIndex 282))) (expr (ELEMENT_OPTIONS (= tokenIndex 284) (= p 16)))) (ALT ({self.precpred(self._ctx, 14)}? (ELEMENT_OPTIONS (= p 14))) ('-' (ELEMENT_OPTIONS (= tokenIndex 290))) (expr (ELEMENT_OPTIONS (= tokenIndex 292) (= p 15)))) (ALT ({self.precpred(self._ctx, 13)}? (ELEMENT_OPTIONS (= p 13))) ('*' (ELEMENT_OPTIONS (= tokenIndex 298))) (expr (ELEMENT_OPTIONS (= tokenIndex 300) (= p 14)))) (ALT ({self.precpred(self._ctx, 12)}? (ELEMENT_OPTIONS (= p 12))) ('/' (ELEMENT_OPTIONS (= tokenIndex 306))) (expr (ELEMENT_OPTIONS (= tokenIndex 308) (= p 13)))) (ALT ({self.precpred(self._ctx, 10)}? (ELEMENT_OPTIONS (= p 10))) ('<' (ELEMENT_OPTIONS (= tokenIndex 319))) (expr (ELEMENT_OPTIONS (= tokenIndex 321) (= p 11)))) (ALT ({self.precpred(self._ctx, 9)}? (ELEMENT_OPTIONS (= p 9))) ('<=' (ELEMENT_OPTIONS (= tokenIndex 327))) (expr (ELEMENT_OPTIONS (= tokenIndex 329) (= p 10)))) (ALT ({self.precpred(self._ctx, 8)}? (ELEMENT_OPTIONS (= p 8))) ('=' (ELEMENT_OPTIONS (= tokenIndex 335))) (expr (ELEMENT_OPTIONS (= tokenIndex 337) (= p 9)))) (ALT ({self.precpred(self._ctx, 24)}? (ELEMENT_OPTIONS (= p 24))) (? (BLOCK (ALT ('@' (ELEMENT_OPTIONS (= tokenIndex 128))) (TYPE (ELEMENT_OPTIONS (= tokenIndex 129)))))) ('.' (ELEMENT_OPTIONS (= tokenIndex 132))) (ID (ELEMENT_OPTIONS (= tokenIndex 133))) ('(' (ELEMENT_OPTIONS (= tokenIndex 134))) (? (BLOCK (ALT (expr (ELEMENT_OPTIONS (= tokenIndex 136))) (* (BLOCK (ALT (',' (ELEMENT_OPTIONS (= tokenIndex 139))) (expr (ELEMENT_OPTIONS (= tokenIndex 140))))))))) (')' (ELEMENT_OPTIONS (= tokenIndex 145)))))))))
+2022-06-04 15:46:11:343 semantics LogManager.java:25 tokens={EOF=-1, T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, T__30=31, T__31=32, T__32=33, T__33=34, T__34=35, T__35=36, T__36=37, T__37=38, ID=39, TYPE=40, STRING=41, INTEGER=42, WS=43, LINE_COMMENT=44, COMMENT=45}
+2022-06-04 15:46:11:343 semantics LogManager.java:25 strings={';'=1, 'class'=2, 'inherits'=3, '{'=4, '}'=5, '('=6, ','=7, ')'=8, ':'=9, '<-'=10, '@'=11, '.'=12, 'if'=13, 'then'=14, 'else'=15, 'fi'=16, 'while'=17, 'loop'=18, 'pool'=19, 'let'=20, 'in'=21, 'case'=22, 'of'=23, '=>'=24, 'esac'=25, 'new'=26, 'isvoid'=27, '+'=28, '-'=29, '*'=30, '/'=31, '~'=32, '<'=33, '<='=34, '='=35, 'not'=36, 'true'=37, 'false'=38}
+2022-06-04 15:46:11:353 LL1 LogManager.java:25 
+DECISION 0 in rule prog
+2022-06-04 15:46:11:354 LL1 LogManager.java:25 look=[2, <EOF>]
+2022-06-04 15:46:11:354 LL1 LogManager.java:25 LL(1)? true
+2022-06-04 15:46:11:354 LL1 LogManager.java:25 
+DECISION 1 in rule class
+2022-06-04 15:46:11:354 LL1 LogManager.java:25 look=[3, 4]
+2022-06-04 15:46:11:354 LL1 LogManager.java:25 LL(1)? true
+2022-06-04 15:46:11:354 LL1 LogManager.java:25 
+DECISION 2 in rule class
+2022-06-04 15:46:11:354 LL1 LogManager.java:25 look=[39, 5]
+2022-06-04 15:46:11:354 LL1 LogManager.java:25 LL(1)? true
+2022-06-04 15:46:11:354 LL1 LogManager.java:25 
+DECISION 3 in rule feature
+2022-06-04 15:46:11:354 LL1 LogManager.java:25 look=[7, 8]
+2022-06-04 15:46:11:354 LL1 LogManager.java:25 LL(1)? true
+2022-06-04 15:46:11:355 LL1 LogManager.java:25 
+DECISION 4 in rule feature
+2022-06-04 15:46:11:355 LL1 LogManager.java:25 look=[39, 8]
+2022-06-04 15:46:11:355 LL1 LogManager.java:25 LL(1)? true
+2022-06-04 15:46:11:355 LL1 LogManager.java:25 
+DECISION 5 in rule feature
+2022-06-04 15:46:11:355 LL1 LogManager.java:25 look=[10, 1]
+2022-06-04 15:46:11:355 LL1 LogManager.java:25 LL(1)? true
+2022-06-04 15:46:11:355 LL1 LogManager.java:25 
+DECISION 6 in rule feature
+2022-06-04 15:46:11:355 LL1 LogManager.java:25 look=[39, 39]
+2022-06-04 15:46:11:355 LL1 LogManager.java:25 LL(1)? false
+2022-06-04 15:46:11:355 LL1 LogManager.java:25 
+DECISION 7 in rule expr
+2022-06-04 15:46:11:355 LL1 LogManager.java:25 look=[7, 8]
+2022-06-04 15:46:11:355 LL1 LogManager.java:25 LL(1)? true
+2022-06-04 15:46:11:355 LL1 LogManager.java:25 
+DECISION 8 in rule expr
+2022-06-04 15:46:11:356 LL1 LogManager.java:25 look=[{4, 6, 13, 17, 20, 22, 26..27, 32, 36..39, 41..42}, 8]
+2022-06-04 15:46:11:356 LL1 LogManager.java:25 LL(1)? true
+2022-06-04 15:46:11:356 LL1 LogManager.java:25 
+DECISION 9 in rule expr
+2022-06-04 15:46:11:356 LL1 LogManager.java:25 look=[{4, 6, 13, 17, 20, 22, 26..27, 32, 36..39, 41..42}, 5]
+2022-06-04 15:46:11:356 LL1 LogManager.java:25 LL(1)? true
+2022-06-04 15:46:11:356 LL1 LogManager.java:25 
+DECISION 10 in rule expr
+2022-06-04 15:46:11:356 LL1 LogManager.java:25 look=[10, {7, 21}]
+2022-06-04 15:46:11:356 LL1 LogManager.java:25 LL(1)? true
+2022-06-04 15:46:11:356 LL1 LogManager.java:25 
+DECISION 11 in rule expr
+2022-06-04 15:46:11:356 LL1 LogManager.java:25 look=[10, {7, 21}]
+2022-06-04 15:46:11:356 LL1 LogManager.java:25 LL(1)? true
+2022-06-04 15:46:11:357 LL1 LogManager.java:25 
+DECISION 12 in rule expr
+2022-06-04 15:46:11:357 LL1 LogManager.java:25 look=[7, 21]
+2022-06-04 15:46:11:357 LL1 LogManager.java:25 LL(1)? true
+2022-06-04 15:46:11:357 LL1 LogManager.java:25 
+DECISION 13 in rule expr
+2022-06-04 15:46:11:357 LL1 LogManager.java:25 look=[39, 25]
+2022-06-04 15:46:11:357 LL1 LogManager.java:25 LL(1)? true
+2022-06-04 15:46:11:357 LL1 LogManager.java:25 
+DECISION 14 in rule expr
+2022-06-04 15:46:11:357 LL1 LogManager.java:25 look=[39, 39, 13, 17, 4, 20, 22, 26, 27, 32, 36, 6, 39, 42, 41, 37, 38]
+2022-06-04 15:46:11:357 LL1 LogManager.java:25 LL(1)? false
+2022-06-04 15:46:11:357 LL1 LogManager.java:25 
+DECISION 15 in rule expr
+2022-06-04 15:46:11:357 LL1 LogManager.java:25 look=[11, 12]
+2022-06-04 15:46:11:357 LL1 LogManager.java:25 LL(1)? true
+2022-06-04 15:46:11:357 LL1 LogManager.java:25 
+DECISION 16 in rule expr
+2022-06-04 15:46:11:357 LL1 LogManager.java:25 look=[7, 8]
+2022-06-04 15:46:11:357 LL1 LogManager.java:25 LL(1)? true
+2022-06-04 15:46:11:358 LL1 LogManager.java:25 
+DECISION 17 in rule expr
+2022-06-04 15:46:11:358 LL1 LogManager.java:25 look=[{4, 6, 13, 17, 20, 22, 26..27, 32, 36..39, 41..42}, 8]
+2022-06-04 15:46:11:358 LL1 LogManager.java:25 LL(1)? true
+2022-06-04 15:46:11:358 LL1 LogManager.java:25 
+DECISION 18 in rule expr
+2022-06-04 15:46:11:358 LL1 LogManager.java:25 look=[null, null, null, null, null, null, null, null]
+2022-06-04 15:46:11:358 LL1 LogManager.java:25 LL(1)? false
+2022-06-04 15:46:11:358 LL1 LogManager.java:25 
+DECISION 19 in rule expr
+2022-06-04 15:46:11:358 LL1 LogManager.java:25 look=[null, null]
+2022-06-04 15:46:11:358 LL1 LogManager.java:25 LL(1)? false
+2022-06-04 15:46:11:377 action-translator LogManager.java:25 translate 
+    semantico=AnalisadorSemantico()
+    semantico.tabela={}
+    varNome=""
+    varValue=None
+
+2022-06-04 15:46:11:377 action-translator LogManager.java:25 translate 
+from analisadorSemantico import AnalisadorSemantico
+
+2022-06-04 15:46:11:389 action-translator LogManager.java:25 translate 
+               varNome= input.LT(-1).getText()
+               varValue=None
+               if (semantico.existe(tabela,varNome)==False){
+	                     semantico.adicionar(semantico,varNome,varValue)
+	                  }
+	           else{
+	                  print("Variavel ja declarada")
+	                }
+               
+2022-06-04 15:46:11:389 action-translator LogManager.java:25 translate 
+               varNome= input.LT(-1).getText()
+               varValue=None
+               if (semantico.existe(tabela,varNome)==False){
+	                     semantico.adicionar(semantico,varNome,varValue)
+	                  }
+	           else{
+	                  print("Variavel ja declarada")
+	                }
+               
+2022-06-04 15:46:11:392 action-translator LogManager.java:25 translate 
+2022-06-04 15:46:11:396 action-translator LogManager.java:25 translate self.precpred(self._ctx, 15)
+2022-06-04 15:46:11:396 action-translator LogManager.java:25 translate self.precpred(self._ctx, 14)
+2022-06-04 15:46:11:396 action-translator LogManager.java:25 translate self.precpred(self._ctx, 13)
+2022-06-04 15:46:11:396 action-translator LogManager.java:25 translate self.precpred(self._ctx, 12)
+2022-06-04 15:46:11:397 action-translator LogManager.java:25 translate self.precpred(self._ctx, 10)
+2022-06-04 15:46:11:397 action-translator LogManager.java:25 translate self.precpred(self._ctx, 9)
+2022-06-04 15:46:11:397 action-translator LogManager.java:25 translate self.precpred(self._ctx, 8)
+2022-06-04 15:46:11:397 action-translator LogManager.java:25 translate self.precpred(self._ctx, 24)
+2022-06-04 15:46:11:399 action-translator LogManager.java:25 translate self.precpred(self._ctx, 15)
+2022-06-04 15:46:11:399 action-translator LogManager.java:25 translate self.precpred(self._ctx, 14)
+2022-06-04 15:46:11:399 action-translator LogManager.java:25 translate self.precpred(self._ctx, 13)
+2022-06-04 15:46:11:399 action-translator LogManager.java:25 translate self.precpred(self._ctx, 12)
+2022-06-04 15:46:11:399 action-translator LogManager.java:25 translate self.precpred(self._ctx, 10)
+2022-06-04 15:46:11:399 action-translator LogManager.java:25 translate self.precpred(self._ctx, 9)
+2022-06-04 15:46:11:399 action-translator LogManager.java:25 translate self.precpred(self._ctx, 8)
+2022-06-04 15:46:11:399 action-translator LogManager.java:25 translate self.precpred(self._ctx, 24)
+2022-06-04 15:46:11:426 action-translator LogManager.java:25 translate 
+    semantico=AnalisadorSemantico()
+    semantico.tabela={}
+    varNome=""
+    varValue=None
+
+2022-06-04 15:46:11:426 action-translator LogManager.java:25 translate 
+from analisadorSemantico import AnalisadorSemantico
+
+2022-06-04 15:46:11:427 action-translator LogManager.java:25 translate 
+from analisadorSemantico import AnalisadorSemantico
+

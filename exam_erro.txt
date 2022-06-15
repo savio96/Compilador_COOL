@@ -1,0 +1,17 @@
+class Int {
+    a : Bool <- true;
+
+    concat():Bool{
+        not a
+    };
+};
+class Main inherits IO {
+    a : Int;
+    a : Bool;
+    c : Batata <- 7;
+    main() : Object {{
+        a <- 3 + b;
+        inverte(a);
+        }
+    };
+};
