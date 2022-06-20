@@ -1,17 +1,16 @@
-class Int {
-    a : Bool <- true;
-
-    concat():Bool{
+class Classe1 {
+    a : Bool <- 3;
+    inverte():Bool{
         not a
     };
 };
 class Main inherits IO {
     a : Int;
-    a : Bool;
-    c : Batata <- 7;
+    c : String;
     main() : Object {{
-        a <- 3 + b;
-        inverte(a);
+        c <- 5;
+        a <- c;
+        out_int(b);
         }
     };
 };

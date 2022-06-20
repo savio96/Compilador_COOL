@@ -17,7 +17,7 @@ def main(self=None):
     #print("\n")
     #analisadorSintatico=AnalisadorSintatico("coolCells.txt")
     #analisadorSintatico.exec("coolCells.txt")
-    analisadorSemantico=AnalisadorSemantico("exam_erro.txt")
+    analisadorSemantico=AnalisadorSemantico("exam.txt")
     analisadorSemantico.exec()
 
 main()
