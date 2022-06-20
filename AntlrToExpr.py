@@ -1,8 +1,7 @@
-from COOL.string import String_
+from string import String_
 from CoolParser import CoolParser
 from CoolVisitor import CoolVisitor
 from antlr4 import *
-
 from loop import *
 from variable import *
 from soma import *
@@ -123,8 +122,37 @@ class AntlrToExpr(CoolVisitor):
         exprVisitor = AntlrToExpr(self.erros_semanticos, self.metodo, self.variavel, self.tipo)
         esq = ctx.getChild(0).getText()
         dir = exprVisitor.visit(ctx.getChild(2))
+        dir2=ctx.getChild(2).getText()
+        valor=dir
         if esq not in self.variavel:
             self.erros_semanticos.append("Variavel " + esq + " nao declarada!!")
+        else:
+            for id in self.variavel.keys():
+                if id==esq:
+                    tipoVar = self.variavel[id][0]
+                    texto=str(type(dir))
+                    if texto == "<class 'int'>":
+                        tipoDir = 'Int'
+                    elif texto == "<class 'string.String_'>":
+                        tipoDir = 'String'
+                    elif texto =="<class 'bool'>":
+                        tipoDir = 'Bool'
+
+                    elif texto =="<class 'variable.Variable'>":
+                        if dir2 not in self.variavel:
+                            self.erros_semanticos.append("Variavel " + dir2 + " nao declarada!!")
+                            tipoDir="none"
+                        else:
+                            for x in self.variavel.keys():
+                                if x==dir2:
+                                    tipoDir = self.variavel[x][0]
+                                    valor=self.variavel[x][1]
+
+                    if tipoVar==tipoDir:
+                        self.variavel[id][1]=valor
+                        print(self.variavel)
+                    else:
+                        self.erros_semanticos.append("Tipos incompatíveis: variável " + id + " do tipo " +tipoVar+ " recebendo valor do tipo " + tipoDir)
         return Atribuicao(esq, dir)
 
     def visitENulo(self, ctx: CoolParser.ENuloContext):

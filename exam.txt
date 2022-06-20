@@ -1,15 +1,16 @@
 class Classe1 {
     a : Bool <- true;
-
     inverte():Bool{
         not a
     };
 };
 class Main inherits IO {
     a : Int;
+    c : Int;
     main() : Object {{
-        a <- 3;
-        out_int(3);
+        c <- 5;
+        a <- c;
+        out_int(a);
         }
     };
 };
