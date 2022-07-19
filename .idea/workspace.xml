@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ceb59b71-b958-4332-b79b-ef756a0806b4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/gera.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exprArroba.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geradorCodigo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/let.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/COOL.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AntlrToClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/AntlrToClass.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AntlrToExpr.py" beforeDir="false" afterPath="$PROJECT_DIR$/AntlrToExpr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AntlrToFeature.py" beforeDir="false" afterPath="$PROJECT_DIR$/AntlrToFeature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AntlrToProg.py" beforeDir="false" afterPath="$PROJECT_DIR$/AntlrToProg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cool.g4" beforeDir="false" afterPath="$PROJECT_DIR$/Cool.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cool.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/Cool.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolBaseListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolBaseListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolBaseListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolBaseVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolBaseVisitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolBaseVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolBaseVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolLexer.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolLexer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolLexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/CoolLexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$AdicaoContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$AdicaoContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$AtribuicaoContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$AtribuicaoContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$CaseContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$CaseContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$ClassContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$ClassContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$ClasseContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$ClasseContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$DeclaracaoFeatureContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$DeclaracaoFeatureContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$DeclaracaoFormalContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$DeclaracaoFormalContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$DivisaoContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$DivisaoContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$ENuloContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$ENuloContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$ExprArrobaContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$ExprArrobaContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$ExprChavesContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$ExprChavesContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$ExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$ExprContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$ExprParentesesContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$ExprParentesesContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$FalsoContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$FalsoContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$FeatureContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$FeatureContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$FormalContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$FormalContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$IdentificadorContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$IdentificadorContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$IfContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$IfContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$IgualContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$IgualContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$InteiroContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$InteiroContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$LetContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$LetContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$LoopContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$LoopContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$MenorContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$MenorContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$MenorIgualContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$MenorIgualContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$MetodoContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$MetodoContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$MultiplicacaoContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$MultiplicacaoContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$NegacaoContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$NegacaoContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$NegacaoNotContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$NegacaoNotContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$NovoTipoContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$NovoTipoContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$ProgContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$ProgContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$ProgramaContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$ProgramaContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$StringContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$StringContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$SubtracaoContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$SubtracaoContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$VariasExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$VariasExprContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser$VerdadeiroContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser$VerdadeiroContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/CoolVisitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExprChaves.py" beforeDir="false" afterPath="$PROJECT_DIR$/ExprChaves.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/atribuicao.py" beforeDir="false" afterPath="$PROJECT_DIR$/atribuicao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/case.py" beforeDir="false" afterPath="$PROJECT_DIR$/case.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classe.py" beforeDir="false" afterPath="$PROJECT_DIR$/classe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/declaracaoFormal.py" beforeDir="false" afterPath="$PROJECT_DIR$/declaracaoFormal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/divisao.py" beforeDir="false" afterPath="$PROJECT_DIR$/divisao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enulo.py" beforeDir="false" afterPath="$PROJECT_DIR$/enulo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exam.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exprParenteses.py" beforeDir="false" afterPath="$PROJECT_DIR$/exprParenteses.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature.py" beforeDir="false" afterPath="$PROJECT_DIR$/feature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ifCon.py" beforeDir="false" afterPath="$PROJECT_DIR$/ifCon.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/igual.py" beforeDir="false" afterPath="$PROJECT_DIR$/igual.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loop.py" beforeDir="false" afterPath="$PROJECT_DIR$/loop.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/menor.py" beforeDir="false" afterPath="$PROJECT_DIR$/menor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/menorIgual.py" beforeDir="false" afterPath="$PROJECT_DIR$/menorIgual.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/multiplication.py" beforeDir="false" afterPath="$PROJECT_DIR$/multiplication.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/negacao.py" beforeDir="false" afterPath="$PROJECT_DIR$/negacao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/negacaoNot.py" beforeDir="false" afterPath="$PROJECT_DIR$/negacaoNot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/number.py" beforeDir="false" afterPath="$PROJECT_DIR$/number.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processamento.py" beforeDir="false" afterPath="$PROJECT_DIR$/processamento.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/program.py" beforeDir="false" afterPath="$PROJECT_DIR$/program.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/soma.py" beforeDir="false" afterPath="$PROJECT_DIR$/soma.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/string.py" beforeDir="false" afterPath="$PROJECT_DIR$/string.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subtracao.py" beforeDir="false" afterPath="$PROJECT_DIR$/subtracao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/variable.py" beforeDir="false" afterPath="$PROJECT_DIR$/variable.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/variableFeatureDecl.py" beforeDir="false" afterPath="$PROJECT_DIR$/variableFeatureDecl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/variasExpressoes.py" beforeDir="false" afterPath="$PROJECT_DIR$/variasExpressoes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/variavel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verdadeiro.py" beforeDir="false" afterPath="$PROJECT_DIR$/verdadeiro.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Bic3YkXl6qahg9GmenTYVS7Z6p" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../an/venv/Lib/site-packages/antlr4" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="gera" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ceb59b71-b958-4332-b79b-ef756a0806b4" name="Changes" comment="" />
+      <created>1657392147544</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1657392147544</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -1,5 +1,7 @@
 from classe import *
-class Feature(Class):
+
+
+class Feature(Classe):
     def __init__(self):
         super().__init__()
         self.listaExpr = []

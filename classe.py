@@ -1,5 +1,7 @@
 from program import *
-class Class(Program):
+
+
+class Classe(Program):
     def __init__(self):
         super().__init__()
         self.listaFeature = []

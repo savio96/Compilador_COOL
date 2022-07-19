@@ -1,6 +1,7 @@
 from analisadorLexico import AnalisadorLexico
 from analisadorSintatico import AnalisadorSintatico
 from analisadorSemantico import AnalisadorSemantico
+
 # Ler e fechar arquivo e retorna o conteúdo.
 def lerArquivo(nomeArq):
     arq = open(nomeArq, "r")
@@ -19,6 +20,7 @@ def main(self=None):
     #analisadorSintatico.exec("coolCells.txt")
     analisadorSemantico=AnalisadorSemantico("exam.txt")
     analisadorSemantico.exec()
+
 
 main()
 

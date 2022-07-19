@@ -6,7 +6,7 @@ class   :   'class' TYPE ('inherits' TYPE)? '{' (feature ';')* '}' #Classe
 feature :   ID'('(formal (','formal)*)?')' ':' TYPE '{' expr '}' #Metodo
         |   ID ':' TYPE ('<-' expr)? #DeclaracaoFeature
         ;
-formal  :   ID ':' TYPE #DeclaracaoFormal
+formal  :  ID ':' TYPE #DeclaracaoFormal
         ;
 expr    :   ID '<-' expr #Atribuicao
         |   expr ('@'TYPE)?'.'ID'('(expr (','expr)*)?')' #ExprArroba

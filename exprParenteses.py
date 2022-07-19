@@ -1,5 +1,5 @@
 from classe import *
-class ExprParenteses(Class):
+class ExprParenteses(Classe):
     def __init__(self, string):
         super().__init__()
         self.expr=string
