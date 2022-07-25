@@ -1,0 +1,37 @@
+@out_int_IO(this: int) { print this; }
+@initBook_Book(this: ptr<int>
+, title_p: int
+, author_p: int
+):
+ptr<int> {
+
+store this title_p;
+
+inc: int = const 1;
+this1 : ptr<int> = ptradd this inc;
+store this1 author_p;
+
+ret this;
+}
+@print_Book(this: ptr<int>
+):
+ptr<int> {
+inc: int = const 0;
+this2: ptr<int> = ptradd this inc;
+v0: int = load this2;
+call @out_int_IO v0;
+inc: int = const 1;
+this3: ptr<int> = ptradd this inc;
+v1: int = load this3;
+call @out_int_IO v1;
+
+ret this;
+}
+@main {
+v2 : int = const 8;
+v3 : int = const 2;
+
+
+v6: int = mul v2 v3;
+call @out_int_IO v6;
+}

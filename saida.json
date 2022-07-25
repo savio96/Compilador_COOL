@@ -1,0 +1,207 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "this",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "this"
+          ],
+          "op": "print"
+        }
+      ],
+      "name": "out_int_IO"
+    },
+    {
+      "args": [
+        {
+          "name": "this",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "name": "title_p",
+          "type": "int"
+        },
+        {
+          "name": "author_p",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "this",
+            "title_p"
+          ],
+          "op": "store"
+        },
+        {
+          "dest": "inc",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "this",
+            "inc"
+          ],
+          "dest": "this1",
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "this1",
+            "author_p"
+          ],
+          "op": "store"
+        },
+        {
+          "args": [
+            "this"
+          ],
+          "op": "ret"
+        }
+      ],
+      "name": "initBook_Book",
+      "type": {
+        "ptr": "int"
+      }
+    },
+    {
+      "args": [
+        {
+          "name": "this",
+          "type": {
+            "ptr": "int"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "inc",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "this",
+            "inc"
+          ],
+          "dest": "this2",
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "this2"
+          ],
+          "dest": "v0",
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v0"
+          ],
+          "funcs": [
+            "out_int_IO"
+          ],
+          "op": "call"
+        },
+        {
+          "dest": "inc",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "this",
+            "inc"
+          ],
+          "dest": "this3",
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "this3"
+          ],
+          "dest": "v1",
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v1"
+          ],
+          "funcs": [
+            "out_int_IO"
+          ],
+          "op": "call"
+        },
+        {
+          "args": [
+            "this"
+          ],
+          "op": "ret"
+        }
+      ],
+      "name": "print_Book",
+      "type": {
+        "ptr": "int"
+      }
+    },
+    {
+      "instrs": [
+        {
+          "dest": "v2",
+          "op": "const",
+          "type": "int",
+          "value": 8
+        },
+        {
+          "dest": "v3",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "args": [
+            "v2",
+            "v3"
+          ],
+          "dest": "v6",
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v6"
+          ],
+          "funcs": [
+            "out_int_IO"
+          ],
+          "op": "call"
+        }
+      ],
+      "name": "main"
+    }
+  ]
+}
