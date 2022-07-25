@@ -1,5 +1,5 @@
 from classe import *
-class Case(Class):
+class Case(Classe):
 
     def __init__(self, expr, id, tipo,expr2):
         super().__init__()

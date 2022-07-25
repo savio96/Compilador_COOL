@@ -1,16 +1,29 @@
-class Classe1 {
-    a : Bool <- true;
-    inverte():Bool{
-        not a
-    };
-};
-class Main inherits IO {
-    a : Int;
-    c : Int;
-    main() : Object {{
-        c <- 5;
-        a <- c;
-        out_int(a);
+class Book inherits IO {
+    title : Int;
+    author : Int;
+
+    initBook(title_p : Int, author_p : Int) : Book {
+        {
+            title <- title_p;
+            author <- author_p;
+            self;
         }
+    };
+
+    print() : Book {
+        {
+            out_int(title);
+            out_int(author);
+            self;
+        }
+    };
+
+};
+
+class Main inherits IO {
+    a: Int <- 8;
+    b: Int <- 2;
+    main() : Object{
+       out_int(a*b)
     };
 };

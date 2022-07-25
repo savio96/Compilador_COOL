@@ -1,5 +1,5 @@
 from classe import *
-class ExprChaves(Class):
+class ExprChaves(Classe):
     def __init__(self,vetor):
         super().__init__()
         self.vetor=vetor

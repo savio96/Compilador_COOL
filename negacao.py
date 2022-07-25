@@ -1,5 +1,5 @@
 from classe import *
-class Negacao(Class):
+class Negacao(Classe):
     def __init__(self, string):
         super().__init__()
         self.string=string
